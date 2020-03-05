@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
                 android.R.layout.simple_list_item_multiple_choice, tirages);
 
         mListView.setAdapter(adapter);
-        mListView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+        mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
 
     }

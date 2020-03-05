@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LotoQuinote</string>
+    <string name="createButton">Créer un nouveau tirage</string>
 </resources>

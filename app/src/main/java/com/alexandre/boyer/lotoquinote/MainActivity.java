@@ -3,6 +3,7 @@ package com.alexandre.boyer.lotoquinote;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,9 +29,10 @@ public class MainActivity extends AppCompatActivity
         mListView.setClickable(true);
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_1, tirages);
+                android.R.layout.simple_list_item_multiple_choice, tirages);
 
         mListView.setAdapter(adapter);
+        mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
 
     }

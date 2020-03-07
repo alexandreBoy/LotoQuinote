@@ -3,11 +3,17 @@ package com.alexandre.boyer.lotoquinote;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 import android.view.View;
+
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,10 +46,27 @@ public class MainActivity extends AppCompatActivity
         mListView = findViewById(R.id.listView);
         mNewDrawButton = findViewById(R.id.newDraw);
 
+
+        /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                android.R.layout.simple_list_item_multiple_choice, tirages);*/
+        ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
+        HashMap<String,String> map;
+
+        for (int i=0; i<tirages.length;i++){
+            map = new HashMap<String,String>();
+            map.put("nom_tirage",tirages[i]);
+            listItem.add(map);
+        }
+
+
+        SimpleAdapter adapter = new SimpleAdapter(this.getBaseContext(),listItem,R.layout.liste_tirages_items, new String[] {"nom_tirage"},new int[] {R.id.activity_main_name_tirage_txt});
+
+
         /*
         mListView.setClickable(true);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_multiple_choice, tirages);
+
         mListView.setAdapter(adapter);
         mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
          */

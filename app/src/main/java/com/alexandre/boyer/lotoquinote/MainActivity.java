@@ -44,27 +44,22 @@ public class MainActivity extends AppCompatActivity
                 Tirage mDraw = new Tirage("Suivi du tirage n° ",today);
                 draws.add(mDraw);
 
-                ArrayList<HashMap<String, Tirage>> listItem = new ArrayList<HashMap<String, Tirage>>();
-                HashMap<String,Tirage> map;
+                ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
+                HashMap<String,String> map;
 
                 // Ajout d'un item dans la listItem
                 for (int i=0; i<draws.size();i++){
-                    map = new HashMap<String,Tirage>();
-                    map.put(draws.get(i).getTitle(),draws.get(i));
+                    map = new HashMap<String,String>();
+                    map.put(draws.get(i).getTitle(),draws.get(i).getTitle());
                     listItem.add(map);
 
                     SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,
-                            listItem,R.layout.liste_tirages_items, new String[] {draws.get(i).getTitle()},new int[] {R.id.activity_main_name_tirage_txt});
+                            listItem,R.layout.liste_tirages_items, new String[] {draws.get(i).getTitle()},
+                            new int[] {R.id.activity_main_name_tirage_txt});
                     mListView.setAdapter(adapter);
                 }
-
-
-
-                //mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-
                 // Compter le nombre de tirages pour savoir quel numéro de tirage doit être crée
             }
         });
-
     }
 }

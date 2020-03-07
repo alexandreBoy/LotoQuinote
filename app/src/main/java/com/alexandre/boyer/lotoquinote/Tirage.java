@@ -10,25 +10,25 @@ import java.util.Date;
  */
 public class Tirage
 {
-    String Title;
+    String title;
     String date;
     Date today = new Date();
 
 
     public Tirage(String title, Date today)
     {
-        Title = title;
+        this.title = title;
         this.today = today;
     }
 
     public String getTitle()
     {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title)
     {
-        Title = title;
+        title = title;
     }
 
     @SuppressLint("SimpleDateFormat")

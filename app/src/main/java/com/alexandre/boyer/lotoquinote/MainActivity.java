@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity
 
         mListView = findViewById(R.id.listView);
         mNewDrawButton = findViewById(R.id.newDraw);
+        final List<Tirage> draws = new ArrayList<>();
 
         mNewDrawButton.setOnClickListener(new View.OnClickListener()
         {
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity
             {
                 Date today = new Date();
                 Tirage mDraw = new Tirage("Suivi du tirage n° ",today);
-                List<Tirage> draws = new ArrayList<>();
                 draws.add(mDraw);
 
                 ArrayList<HashMap<String, Tirage>> listItem = new ArrayList<HashMap<String, Tirage>>();
@@ -52,12 +52,14 @@ public class MainActivity extends AppCompatActivity
                     map = new HashMap<String,Tirage>();
                     map.put(draws.get(i).getTitle(),draws.get(i));
                     listItem.add(map);
+
+                    SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,
+                            listItem,R.layout.liste_tirages_items, new String[] {draws.get(i).getTitle()},new int[] {R.id.activity_main_name_tirage_txt});
+                    mListView.setAdapter(adapter);
                 }
 
 
-                SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,
-                        listItem,R.layout.liste_tirages_items, new String[] {"nom_tirage"},new int[] {R.id.activity_main_name_tirage_txt});
-                mListView.setAdapter(adapter);
+
                 //mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
                 // Compter le nombre de tirages pour savoir quel numéro de tirage doit être crée

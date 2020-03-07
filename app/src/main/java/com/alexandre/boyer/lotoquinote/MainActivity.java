@@ -7,9 +7,12 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity
 {
     ListView mListView;
+    // Date today = new Date();
     private String[] tirages = new String[]
             {
                     "Suivi du tirage n°1","Suivi du tirage n°2","Suivi du tirage n°3",
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity
                     "Suivi du tirage n°10","Suivi du tirage n°11","Suivi du tirage n°12",
                     "Suivi du tirage n°13","Suivi du tirage n°14","Suivi du tirage n°15"
             };
+
+     // Tirage mTirage = new Tirage("Tirage1", today);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,7 +38,5 @@ public class MainActivity extends AppCompatActivity
 
         mListView.setAdapter(adapter);
         mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-
-
     }
 }

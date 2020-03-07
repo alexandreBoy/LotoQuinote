@@ -25,18 +25,6 @@ public class MainActivity extends AppCompatActivity
     ListView mListView;
     Button mNewDrawButton;
 
-    /*
-    private String[] tirages = new String[]
-            {
-                    "Suivi du tirage n°1","Suivi du tirage n°2","Suivi du tirage n°3",
-                    "Suivi du tirage n°4","Suivi du tirage n°5","Suivi du tirage n°6",
-                    "Suivi du tirage n°7","Suivi du tirage n°8","Suivi du tirage n°9",
-                    "Suivi du tirage n°10","Suivi du tirage n°11","Suivi du tirage n°12",
-                    "Suivi du tirage n°13","Suivi du tirage n°14","Suivi du tirage n°15"
-            };
-
-     */
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -45,31 +33,6 @@ public class MainActivity extends AppCompatActivity
 
         mListView = findViewById(R.id.listView);
         mNewDrawButton = findViewById(R.id.newDraw);
-
-
-        /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_multiple_choice, tirages);*/
-        ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
-        HashMap<String,String> map;
-
-        for (int i=0; i<tirages.length;i++){
-            map = new HashMap<String,String>();
-            map.put("nom_tirage",tirages[i]);
-            listItem.add(map);
-        }
-
-
-        SimpleAdapter adapter = new SimpleAdapter(this.getBaseContext(),listItem,R.layout.liste_tirages_items, new String[] {"nom_tirage"},new int[] {R.id.activity_main_name_tirage_txt});
-
-
-        /*
-        mListView.setClickable(true);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_multiple_choice, tirages);
-
-        mListView.setAdapter(adapter);
-        mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-         */
 
         mNewDrawButton.setOnClickListener(new View.OnClickListener()
         {
@@ -81,21 +44,21 @@ public class MainActivity extends AppCompatActivity
                 List<Tirage> draws = new ArrayList<>();
                 draws.add(mDraw);
 
-                //String title = mTirage.getTitle();
-                //String date = mTirage.getDate();
+                ArrayList<HashMap<String, Tirage>> listItem = new ArrayList<HashMap<String, Tirage>>();
+                HashMap<String,Tirage> map;
 
-                // Ajout d'un item dans la listView
-
-                for(int i = 0; i < draws.size(); i++)
-                {
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                            android.R.layout.simple_list_item_multiple_choice, Collections.singletonList(draws.get(i).getTitle()));
-                    mListView.setAdapter(adapter);
+                // Ajout d'un item dans la listItem
+                for (int i=0; i<draws.size();i++){
+                    map = new HashMap<String,Tirage>();
+                    map.put(draws.get(i).getTitle(),draws.get(i));
+                    listItem.add(map);
                 }
 
-                mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
-
+                SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,
+                        listItem,R.layout.liste_tirages_items, new String[] {"nom_tirage"},new int[] {R.id.activity_main_name_tirage_txt});
+                mListView.setAdapter(adapter);
+                //mListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
                 // Compter le nombre de tirages pour savoir quel numéro de tirage doit être crée
             }

@@ -2,10 +2,12 @@ package com.alexandre.boyer.lotoquinote.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
 
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -82,6 +84,18 @@ public class MainActivity extends AppCompatActivity
                     // Suppression de l'item ou des items check de la ListView
                     draws.remove(id);
                 }
+            }
+        });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            // Le clique ne fonctionne pas
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                // Permet de lancer l'activité "DrawTackingActivity" qui affiche la vue de suivi de tirage
+                Intent drawTrackingActivity = new Intent(MainActivity.this, DrawTrackingActivity.class);
+                startActivity(drawTrackingActivity);
             }
         });
     }

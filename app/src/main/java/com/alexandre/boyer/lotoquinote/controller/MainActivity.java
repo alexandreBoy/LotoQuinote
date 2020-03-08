@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity
                 // Ajout d'un item dans la listItem
                 for (int i=0; i<draws.size();i++){
                     map = new HashMap<String,String>();
-                    map.put(draws.get(i).getTitle(),draws.get(i).getTitle());
+                    map.put("titre",draws.get(i).getTitle());
                     listItem.add(map);
 
                     SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,
-                            listItem,R.layout.liste_tirages_items, new String[] {draws.get(i).getTitle()},
+                            listItem,R.layout.liste_tirages_items, new String[] {"titre"},
                             new int[] {R.id.activity_main_name_tirage_txt});
                     mListView.setAdapter(adapter);
                 }

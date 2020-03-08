@@ -1,4 +1,4 @@
-package com.alexandre.boyer.lotoquinote;
+package com.alexandre.boyer.lotoquinote.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,19 +6,18 @@ import android.os.Bundle;
 
 import android.view.View;
 
-import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.alexandre.boyer.lotoquinote.R;
+import com.alexandre.boyer.lotoquinote.model.Tirage;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 

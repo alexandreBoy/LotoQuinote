@@ -1,4 +1,4 @@
-package com.alexandre.boyer.lotoquinote;
+package com.alexandre.boyer.lotoquinote.model;
 
 import android.annotation.SuppressLint;
 

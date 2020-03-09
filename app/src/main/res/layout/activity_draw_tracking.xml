@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFF"
     tools:context=".controller.DrawTrackingActivity">
 
     <TextView
@@ -72,5 +73,121 @@
         android:text="@string/finishButton"
         android:textAllCaps="false"
         android:textSize="20sp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="500dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="550dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="210dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideLine4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="600dp" />
+
+    <Button
+        android:id="@+id/activity_draw_pos1List"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/activity_draw_pos2List"
+        app:layout_constraintTop_toBottomOf="@+id/guideLine1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideLine2"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/pos1List"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/activity_draw_pos2List"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="@+id/activity_draw_pos3List"
+        app:layout_constraintLeft_toRightOf="@+id/activity_draw_pos1List"
+        app:layout_constraintTop_toBottomOf="@+id/guideLine1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideLine2"
+
+        android:text="@string/pos2List"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/activity_draw_pos3List"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="@+id/guideLine3"
+        app:layout_constraintLeft_toRightOf="@+id/activity_draw_pos2List"
+        app:layout_constraintTop_toBottomOf="@+id/guideLine1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideLine2"
+        android:text="@string/pos3List"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/activity_draw_pos4List"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/guideLine3"
+        app:layout_constraintRight_toLeftOf="@+id/activity_draw_pos5List"
+        app:layout_constraintTop_toBottomOf="@+id/guideLine1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideLine2"
+        android:text="@string/pos4List"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/activity_draw_pos5List"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/activity_draw_pos4List"
+        app:layout_constraintRight_toLeftOf="@+id/activity_draw_pos6List"
+        app:layout_constraintTop_toBottomOf="@+id/guideLine1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideLine2"
+        android:text="@string/pos5List"
+        android:textSize="20sp" />
+
+    <ImageButton
+        android:id="@+id/activity_draw_pos6List"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@+id/activity_draw_pos5List"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideLine1"
+        app:layout_constraintBottom_toBottomOf="@+id/guideLine2"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/baseline_add_box_black_18dp"
+        android:background="#FFFF"
+        android:contentDescription="@string/ContentDescriptionImageButton3" />
+
+    <ImageButton
+        android:id="@+id/activity_draw_deleteNumberPos1"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/activity_draw_pos1List"
+        app:layout_constraintRight_toRightOf="@+id/activity_draw_pos1List"
+        app:layout_constraintTop_toBottomOf="@+id/activity_draw_pos1List"
+        app:layout_constraintBottom_toTopOf="@+id/guideLine4"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/baseline_cancel_black_18dp"
+        android:background="#FFFF"
+        android:contentDescription="@string/ContentDescriptionImageButton3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

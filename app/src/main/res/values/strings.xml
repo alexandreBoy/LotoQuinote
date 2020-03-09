@@ -6,4 +6,10 @@
     <string name="numberDrew">23</string>
     <string name="submitButton">Valider</string>
     <string name="finishButton">Terminer</string>
+    <string name="pos1List">23</string>
+    <string name="pos2List">86</string>
+    <string name="pos3List">52</string>
+    <string name="pos4List">15</string>
+    <string name="pos5List">2</string>
+    <string name="ContentDescriptionImageButton3">Add</string>
 </resources>

@@ -25,11 +25,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
+<<<<<<< HEAD
     ListView mListView;
     Button mNewDrawButton;
     CheckBox mDrawCheckbox;
     ImageButton mDeleteButton;
     ImageButton mEditButton;
+=======
+    private ListView mListView;
+    private Button mNewDrawButton;
+    private CheckBox mDrawCheckbox;
+    private ImageButton mDeleteButton;
+>>>>>>> 4a969e8... Ajout de la liste sur l'interface graphique de activityDraw
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -94,7 +101,6 @@ public class MainActivity extends AppCompatActivity
         });
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-            // Le clique ne fonctionne pas
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)

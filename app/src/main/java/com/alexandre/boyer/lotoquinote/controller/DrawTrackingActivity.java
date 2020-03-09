@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Number;
@@ -20,7 +23,7 @@ public class DrawTrackingActivity extends AppCompatActivity
     private NumberPicker mNumberPicker1;
     private NumberPicker mNumberPicker2;
     private EditText mNumberDrewText;
-    private Number mNumber = new Number(0);
+    private Number mNumber = new Number(1);
 
 
     @Override
@@ -47,6 +50,9 @@ public class DrawTrackingActivity extends AppCompatActivity
         mNumberPicker1.setMaxValue(9);
         mNumberPicker2.setMinValue(0);
         mNumberPicker2.setMaxValue(9);
+
+        mNumberPicker1.setValue(0);
+        mNumberPicker2.setValue(mNumber.getNumber());
 
         mNumberPicker1.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
         {
@@ -110,8 +116,19 @@ public class DrawTrackingActivity extends AppCompatActivity
 
                 if(ch.length() == 1)
                 {
-                    mNumberPicker1.setValue(0);
-                    mNumberPicker2.setValue(mNumber.getNumber());
+                    if(numberTextEdit == 0)
+                    {
+                        mNumber.setNumber(1);
+                        mNumberPicker1.setValue(0);
+                        mNumberPicker2.setValue(1);
+                        String newString = '1'+ch.substring(1);
+                        mNumberDrewText.setText(newString);
+                    }
+                    else
+                    {
+                        mNumberPicker1.setValue(0);
+                        mNumberPicker2.setValue(mNumber.getNumber());
+                    }
                 }
                 else if (ch.length() == 2)
                 {
@@ -139,12 +156,13 @@ public class DrawTrackingActivity extends AppCompatActivity
             }
         });
 
-        mNumberDrewText.setOnClickListener(new View.OnClickListener()
+        mNumberDrewText.setOnEditorActionListener(new TextView.OnEditorActionListener()
         {
             @Override
-            public void onClick(View v)
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
             {
-                mNumberDrewText.setCursorVisible(true);
+                if(actionId == EditorInfo.IME_ACTION_DONE) mNumberDrewText.clearFocus();
+                return false;
             }
         });
     }

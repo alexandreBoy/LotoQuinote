@@ -51,11 +51,12 @@
         app:layout_constraintRight_toRightOf="parent"
         android:inputType="number"
         android:maxLength="2"
-        android:cursorVisible="false"
+        android:cursorVisible="true"
         android:text="@string/numberDrew"
         android:textSize="40sp"
         android:autofillHints="@string/autoFillHints"
         tools:ignore="LabelFor"
+        android:imeOptions="actionDone"
         android:focusable="true"
         android:focusableInTouchMode="true"/>
 

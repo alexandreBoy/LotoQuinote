@@ -3,8 +3,8 @@
     <string name="createButton">Créer un nouveau tirage</string>
     <string name="contentDescriptionImageButton1">Edit</string>
     <string name="contentDescriptionImageButton2">Delete</string>
-    <string name="numberDrew">0</string>
-    <string name="submitButton">Valider</string>
+    <string name="numberDrew">1</string>
+    <string name="submitButton">Ajouter</string>
     <string name="finishButton">Terminer</string>
     <string name="pos1List"> </string>
     <string name="pos2List"> </string>

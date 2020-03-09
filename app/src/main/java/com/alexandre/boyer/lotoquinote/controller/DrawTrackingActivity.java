@@ -2,7 +2,6 @@ package com.alexandre.boyer.lotoquinote.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,13 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.TextView;
 
 import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Number;
 import com.alexandre.boyer.lotoquinote.model.Util;
-
-import static com.alexandre.boyer.lotoquinote.model.Util.stringToInt;
 
 public class DrawTrackingActivity extends AppCompatActivity
 {
@@ -110,6 +106,7 @@ public class DrawTrackingActivity extends AppCompatActivity
                 String ch = s.toString();
                 int numberTextEdit = Util.stringToInt(ch);
                 mNumber.setNumber(numberTextEdit);
+                mNumberDrewText.setCursorVisible(true);
 
                 if(ch.length() == 1)
                 {
@@ -118,8 +115,19 @@ public class DrawTrackingActivity extends AppCompatActivity
                 }
                 else if (ch.length() == 2)
                 {
-                    mNumberPicker1.setValue(mNumber.getNumber()/10);
-                    mNumberPicker2.setValue(mNumber.getNumber()%10);
+                    if(numberTextEdit > 90)
+                    {
+                        mNumber.setNumber(90);
+                        mNumberPicker1.setValue(9);
+                        mNumberPicker2.setValue(0);
+                        String newString = ch.substring(0,1)+'0'+ch.substring(2);
+                        mNumberDrewText.setText(newString);
+                    }
+                    else
+                    {
+                        mNumberPicker1.setValue(mNumber.getNumber()/10);
+                        mNumberPicker2.setValue(mNumber.getNumber()%10);
+                    }
                 }
 
             }
@@ -128,6 +136,15 @@ public class DrawTrackingActivity extends AppCompatActivity
             public void afterTextChanged(Editable s)
             {
 
+            }
+        });
+
+        mNumberDrewText.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mNumberDrewText.setCursorVisible(true);
             }
         });
     }

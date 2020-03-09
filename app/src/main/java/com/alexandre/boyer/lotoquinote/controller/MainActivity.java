@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Tirage;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     private TirageAdapter mTirageAdapter;
     private List<Tirage> draws = new ArrayList<>();
     private Context mContext = this;
+    private boolean mMode; // Booléen indiquant le mode d'affichage de la liste : True --> Edition/Suppression, False --> Affichage simple
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,13 +59,15 @@ public class MainActivity extends AppCompatActivity
         mTirageAdapter = new TirageAdapter( this, (ArrayList<Tirage>) draws);
         mListView.setAdapter(mTirageAdapter);
 
+        mMode = false;
+
         mNewDrawButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 Date today = new Date();
-                Tirage mDraw = new Tirage("Suivi du tirage n° ",today);
+                Tirage mDraw = new Tirage("Suivi du tirage n° "+(draws.size()+1),today);
                 draws.add(mDraw);
 
                 mTirageAdapter = new TirageAdapter(mContext, (ArrayList<Tirage>) draws);
@@ -119,20 +124,51 @@ public class MainActivity extends AppCompatActivity
             }
         });;*/
 
-        /*mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+       mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+               CheckBox cb = view.findViewById(R.id.activity_main_tirage_checkbox);
+               cb.setChecked(!cb.isChecked());
+
+
+               if(!mMode){
+                   // Permet de lancer l'activité "DrawTackingActivity" qui affiche la vue de suivi de tirage
+                   Intent drawTrackingActivity = new Intent(MainActivity.this, DrawTrackingActivity.class);
+                   startActivity(drawTrackingActivity);
+               }else{
+                    Object o = cb.getTag();
+                    if(cb.isChecked()){
+                        if(o instanceof Tirage ){
+                            Toast.makeText(mContext,((Tirage) o).getTitle(),Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            Log.d("Erreur Item", "Ce n'est pas un tirage");
+                        }
+                    }
+               }
+
+           }
+       });
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
-                if(mDeleteButton.getVisibility() == View.GONE){
-                    mEditButton.setVisibility(View.VISIBLE);
-                    mDeleteButton.setVisibility(View.VISIBLE);
-                    return false;
-                }else{
-                    mEditButton.setVisibility(View.GONE);
+                if(mMode){
+                    mMode = false;
                     mDeleteButton.setVisibility(View.GONE);
-                    return true;
+                    mEditButton.setVisibility(View.GONE);
+                }else{
+                    mMode = true;
+                    mDeleteButton.setVisibility(View.VISIBLE);
+                    mEditButton.setVisibility(View.VISIBLE);
+                    Log.d("TEST",mListView.getItemAtPosition(0).toString());
+                    /*for(int i =0; i<draws.size();i++){
+                        Log.d()
+                    }*/
                 }
+                return false;
             }
-        });*/
+        });
     }
 
 }

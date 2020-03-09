@@ -13,12 +13,14 @@ public class Tirage
     String title;
     String date;
     Date today = new Date();
+    boolean isSelected;
 
 
     public Tirage(String title, Date today)
     {
         this.title = title;
         this.today = today;
+        isSelected = false;
     }
 
     public String getTitle()
@@ -42,5 +44,13 @@ public class Tirage
     public void setDate(Date today)
     {
         this.today = new Date();
+    }
+
+    public boolean isSelected(){
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected){
+        isSelected = selected;
     }
 }

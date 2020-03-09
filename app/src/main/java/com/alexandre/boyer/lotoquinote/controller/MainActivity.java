@@ -2,6 +2,7 @@ package com.alexandre.boyer.lotoquinote.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.SimpleAdapter;
 
 import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Tirage;
+import com.alexandre.boyer.lotoquinote.model.TirageAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,12 +27,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
 {
-
     private ListView mListView;
     private Button mNewDrawButton;
     private CheckBox mDrawCheckbox;
     private ImageButton mDeleteButton;
     private ImageButton mEditButton;
+    private TirageAdapter mTirageAdapter;
+    private List<Tirage> draws = new ArrayList<>();
+    private Context mContext = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,7 +52,9 @@ public class MainActivity extends AppCompatActivity
         mDeleteButton.setVisibility(View.GONE);
         mEditButton.setVisibility(View.GONE);
 
-        final List<Tirage> draws = new ArrayList<>();
+
+        mTirageAdapter = new TirageAdapter( this, (ArrayList<Tirage>) draws);
+        mListView.setAdapter(mTirageAdapter);
 
         mNewDrawButton.setOnClickListener(new View.OnClickListener()
         {
@@ -59,7 +65,10 @@ public class MainActivity extends AppCompatActivity
                 Tirage mDraw = new Tirage("Suivi du tirage n° ",today);
                 draws.add(mDraw);
 
-                ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
+                mTirageAdapter = new TirageAdapter(mContext, (ArrayList<Tirage>) draws);
+                mListView.setAdapter(mTirageAdapter);
+
+                /*ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
                 HashMap<String,String> map;
 
                 // Ajout d'un item dans la listItem
@@ -71,13 +80,15 @@ public class MainActivity extends AppCompatActivity
                     SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,
                             listItem,R.layout.liste_tirages_items, new String[] {"titre"},
                             new int[] {R.id.activity_main_name_tirage_txt});
-                    mListView.setAdapter(adapter);
+                    mListView.setAdapter(adapter);*/
+
+
                 }
                 // Compter le nombre de tirages pour savoir quel numéro de tirage doit être crée
-            }
         });
 
-        mDeleteButton.setOnClickListener(new View.OnClickListener()
+
+        /*mDeleteButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -92,9 +103,12 @@ public class MainActivity extends AppCompatActivity
                     draws.remove(id);
                 }
             }
-        });
+        });*/
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+
+       /* mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            // Le clique ne fonctionne pas
+>>>>>>> e698f95... Implementation du nouvel Adapter dans le fichier MainActivity.java
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -103,9 +117,9 @@ public class MainActivity extends AppCompatActivity
                 Intent drawTrackingActivity = new Intent(MainActivity.this, DrawTrackingActivity.class);
                 startActivity(drawTrackingActivity);
             }
-        });
+        });;*/
 
-        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+        /*mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
                 if(mDeleteButton.getVisibility() == View.GONE){
@@ -118,7 +132,7 @@ public class MainActivity extends AppCompatActivity
                     return true;
                 }
             }
-        });
+        });*/
     }
 
 }

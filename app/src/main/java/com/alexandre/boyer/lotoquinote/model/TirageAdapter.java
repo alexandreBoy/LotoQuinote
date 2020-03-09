@@ -31,6 +31,7 @@ public class TirageAdapter extends ArrayAdapter<Tirage>{
         drawsList = list;
     }
 
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){

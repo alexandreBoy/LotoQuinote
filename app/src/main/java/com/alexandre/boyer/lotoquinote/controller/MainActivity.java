@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity
     Button mNewDrawButton;
     CheckBox mDrawCheckbox;
     ImageButton mDeleteButton;
+    ImageButton mEditButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity
         mNewDrawButton = findViewById(R.id.newDraw);
         mDrawCheckbox = findViewById(R.id.activity_main_tirage_checkbox);
         mDeleteButton = findViewById(R.id.deleteButton);
+        mEditButton = findViewById(R.id.editButton);
+
+        //On cache les ImageButton mDeleteButton et mEditButton
+        mDeleteButton.setVisibility(View.GONE);
+        mEditButton.setVisibility(View.GONE);
 
         final List<Tirage> draws = new ArrayList<>();
 
@@ -98,5 +104,21 @@ public class MainActivity extends AppCompatActivity
                 startActivity(drawTrackingActivity);
             }
         });
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
+                if(mDeleteButton.getVisibility() == View.GONE){
+                    mEditButton.setVisibility(View.VISIBLE);
+                    mDeleteButton.setVisibility(View.VISIBLE);
+                    return false;
+                }else{
+                    mEditButton.setVisibility(View.GONE);
+                    mDeleteButton.setVisibility(View.GONE);
+                    return true;
+                }
+            }
+        });
     }
+
 }

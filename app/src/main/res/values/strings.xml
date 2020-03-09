@@ -12,4 +12,5 @@
     <string name="pos4List">15</string>
     <string name="pos5List">2</string>
     <string name="ContentDescriptionImageButton3">Add</string>
+    <string name="autoFillHints">Entrez un numéro</string>
 </resources>

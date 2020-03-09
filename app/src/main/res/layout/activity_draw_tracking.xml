@@ -40,7 +40,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <TextView
+    <EditText
         android:id="@+id/activity_draw_numberDrew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,8 +48,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:inputType="number"
+        android:maxLength="2"
         android:text="@string/numberDrew"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:autofillHints="@string/autoFillHints"
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/activity_draw_submitButton"

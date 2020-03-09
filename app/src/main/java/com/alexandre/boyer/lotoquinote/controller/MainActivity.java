@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     private Button mNewDrawButton;
     private CheckBox mDrawCheckbox;
     private ImageButton mDeleteButton;
+    private ImageButton mEditButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

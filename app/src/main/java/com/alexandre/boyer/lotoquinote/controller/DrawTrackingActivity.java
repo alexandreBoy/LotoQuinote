@@ -146,7 +146,6 @@ public class DrawTrackingActivity extends AppCompatActivity
                         mNumberPicker2.setValue(mNumber.getNumber()%10);
                     }
                 }
-
             }
 
             @Override

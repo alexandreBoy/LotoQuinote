@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 
 import android.widget.AdapterView;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -64,9 +67,31 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+                mNewDrawButton.setEnabled(false);
+
+                Timer buttonTimer = new Timer();
+                buttonTimer.schedule(new TimerTask()
+                {
+                    @Override
+                    public void run()
+                    {
+                        runOnUiThread(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                mNewDrawButton.setEnabled(true);
+                            }
+                        });
+                    }
+                }, 2000);
+
                 Date today = new Date();
                 Tirage mDraw = new Tirage("Suivi du tirage n° "+(draws.size()+1),today);
                 draws.add(mDraw);
+                Toast toast = Toast.makeText(getApplicationContext(),"" + mDraw.getTitle() + " crée", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_VERTICAL,0,550);
+                toast.show();
 
                 mTirageAdapter = new TirageAdapter(mContext, (ArrayList<Tirage>) draws);
                 mListView.setAdapter(mTirageAdapter);
@@ -89,7 +114,9 @@ public class MainActivity extends AppCompatActivity
                     Object o = cb.getTag();
                     if(cb.isChecked()){
                         if(o instanceof Tirage ){
-                            Toast.makeText(mContext,((Tirage) o).getTitle(),Toast.LENGTH_SHORT).show();
+                            Toast toast = Toast.makeText(mContext,((Tirage) o).getTitle() + " sélectionné",Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.CENTER_VERTICAL,0,550);
+                            toast.show();
 
                         }else{
                             Log.d("Erreur Item", "Ce n'est pas un tirage");

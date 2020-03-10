@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.alexandre.boyer.lotoquinote.R;
@@ -22,7 +21,6 @@ import com.alexandre.boyer.lotoquinote.model.Tirage;
 import com.alexandre.boyer.lotoquinote.model.TirageAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import java.util.Date;
 import java.util.List;
@@ -72,59 +70,11 @@ public class MainActivity extends AppCompatActivity
 
                 mTirageAdapter = new TirageAdapter(mContext, (ArrayList<Tirage>) draws);
                 mListView.setAdapter(mTirageAdapter);
-
-                /*ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
-                HashMap<String,String> map;
-
-                // Ajout d'un item dans la listItem
-                for (int i=0; i<draws.size();i++){
-                    map = new HashMap<String,String>();
-                    map.put("titre",draws.get(i).getTitle());
-                    listItem.add(map);
-
-                    SimpleAdapter adapter = new SimpleAdapter(MainActivity.this,
-                            listItem,R.layout.liste_tirages_items, new String[] {"titre"},
-                            new int[] {R.id.activity_main_name_tirage_txt});
-                    mListView.setAdapter(adapter);*/
-
-
-                }
-                // Compter le nombre de tirages pour savoir quel numéro de tirage doit être crée
+            }
         });
 
 
-        /*mDeleteButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                if(mDrawCheckbox.isChecked())
-                // /!\ ERREUR : java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.widget.CheckBox.isChecked()' on a null object reference
-                {
-                    int id = mDrawCheckbox.getId(); // Je ne sais pas si ça fonctionne correctement de récupérer l'Id
-                    // Je pense que si ça fonctionne, il faut stocker les Id dans un tableau pour gérer le cas où plusieurs Checkbox sont cochées
-
-                    // Suppression de l'item ou des items check de la ListView
-                    draws.remove(id);
-                }
-            }
-        });*/
-
-
-       /* mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-            // Le clique ne fonctionne pas
->>>>>>> e698f95... Implementation du nouvel Adapter dans le fichier MainActivity.java
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                // Permet de lancer l'activité "DrawTackingActivity" qui affiche la vue de suivi de tirage
-                Intent drawTrackingActivity = new Intent(MainActivity.this, DrawTrackingActivity.class);
-                startActivity(drawTrackingActivity);
-            }
-        });;*/
-
-       mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                CheckBox cb = view.findViewById(R.id.activity_main_tirage_checkbox);
@@ -170,5 +120,4 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
-
 }

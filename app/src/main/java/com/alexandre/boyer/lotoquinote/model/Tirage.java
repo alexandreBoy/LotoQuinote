@@ -2,6 +2,7 @@ package com.alexandre.boyer.lotoquinote.model;
 
 import android.annotation.SuppressLint;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

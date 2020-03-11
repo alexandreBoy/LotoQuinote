@@ -2,6 +2,7 @@ package com.alexandre.boyer.lotoquinote.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Number;
+import com.alexandre.boyer.lotoquinote.model.Tirage;
 import com.alexandre.boyer.lotoquinote.model.Util;
 
 public class DrawTrackingActivity extends AppCompatActivity
@@ -24,6 +26,7 @@ public class DrawTrackingActivity extends AppCompatActivity
     private NumberPicker mNumberPicker2;
     private EditText mNumberDrewText;
     private Number mNumber = new Number(1);
+    private TextView mDrawTitle;
 
 
     @Override
@@ -36,6 +39,15 @@ public class DrawTrackingActivity extends AppCompatActivity
         mNumberPicker1 = findViewById(R.id.activity_draw_picker1);
         mNumberPicker2 = findViewById(R.id.activity_draw_picker2);
         mNumberDrewText = findViewById(R.id.activity_draw_numberDrew);
+        mDrawTitle = findViewById(R.id.activity_draw_title);
+
+        Intent intent = getIntent();
+        if(intent != null)
+        {
+            mDrawTitle.setText(intent.getStringExtra("mDrawObject"));
+        }
+
+
 
         mFinishButton.setOnClickListener(new View.OnClickListener()
         {

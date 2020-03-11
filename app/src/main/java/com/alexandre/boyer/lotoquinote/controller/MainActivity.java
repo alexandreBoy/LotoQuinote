@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     private Context mContext = this;
     private boolean mMode; // Booléen indiquant le mode d'affichage de la liste : True --> Edition/Suppression, False --> Affichage simple
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -107,14 +108,17 @@ public class MainActivity extends AppCompatActivity
 
 
                if(!mMode){
-                   // Permet de lancer l'activité "DrawTackingActivity" qui affiche la vue de suivi de tirage
+                   Object o = cb.getTag();
+                   Tirage mDraw = (Tirage) o;
                    Intent drawTrackingActivity = new Intent(MainActivity.this, DrawTrackingActivity.class);
+                   drawTrackingActivity.putExtra("mDrawObject", mDraw.getTitle());
+                   // Permet de lancer l'activité "DrawTackingActivity" qui affiche la vue de suivi de tirage
                    startActivity(drawTrackingActivity);
                }else{
                     Object o = cb.getTag();
                     if(cb.isChecked()){
                         if(o instanceof Tirage ){
-                            Toast toast = Toast.makeText(mContext,((Tirage) o).getTitle() + " sélectionné",Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(mContext,((Tirage) o).getTitle(),Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.CENTER_VERTICAL,0,550);
                             toast.show();
 
@@ -139,9 +143,6 @@ public class MainActivity extends AppCompatActivity
                     mDeleteButton.setVisibility(View.VISIBLE);
                     mEditButton.setVisibility(View.VISIBLE);
                     Log.d("TEST",mListView.getItemAtPosition(0).toString());
-                    /*for(int i =0; i<draws.size();i++){
-                        Log.d()
-                    }*/
                 }
                 return false;
             }

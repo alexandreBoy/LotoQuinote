@@ -13,4 +13,5 @@
     <string name="pos5List"> </string>
     <string name="ContentDescriptionImageButton3">Add</string>
     <string name="autoFillHints">Entrez un numéro</string>
+    <string name="drawTitle">Titre du tirage</string>
 </resources>

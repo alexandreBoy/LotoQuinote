@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
-                if(mMode){
+                /*if(mMode){
                     mMode = false;
                     mDeleteButton.setVisibility(View.GONE);
                     mEditButton.setVisibility(View.GONE);
@@ -144,7 +144,18 @@ public class MainActivity extends AppCompatActivity
                     mDeleteButton.setVisibility(View.VISIBLE);
                     mEditButton.setVisibility(View.VISIBLE);
                     Log.d("TEST",mListView.getItemAtPosition(0).toString());
-                }
+                }*/
+
+                //On récupère l'objet via le tag de la checkbox
+                CheckBox cb = view.findViewById(R.id.activity_main_tirage_checkbox);
+                cb.setChecked(!cb.isChecked());
+                Object o = cb.getTag();
+                Tirage mDraw = (Tirage) o;
+                Intent modifyIntent = new Intent(MainActivity.this, ModifyPopUpActivity.class);
+                modifyIntent.putExtra("currentDraw", mDraw);
+                startActivity(modifyIntent);
+
+
                 return false;
             }
         });

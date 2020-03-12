@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Created by Alexandre BOYER on 07/03/2020.
  */
-public class Tirage
+public class Tirage implements Serializable
 {
     String title;
     String date;
@@ -61,7 +61,7 @@ public class Tirage
     }
 
     // Récupérer un nombre situé à un index i
-    public Number getNumber(int i, ArrayList<Number> draw)
+    public Number getListNumber(int i)
     {
         return draw.get(i);
     }

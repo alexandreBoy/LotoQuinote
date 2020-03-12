@@ -19,15 +19,24 @@ import com.alexandre.boyer.lotoquinote.model.Number;
 import com.alexandre.boyer.lotoquinote.model.Tirage;
 import com.alexandre.boyer.lotoquinote.model.Util;
 
+import java.util.ArrayList;
+
 public class DrawTrackingActivity extends AppCompatActivity
 {
     private Button mFinishButton;
+    private Button mAddButton;
+    private Button mPos1List;
+    private Button mPos2List;
+    private Button mPos3List;
+    private Button mPos4List;
+    private Button mPos5List;
     private NumberPicker mNumberPicker1;
     private NumberPicker mNumberPicker2;
     private EditText mNumberDrewText;
     private Number mNumber = new Number(1);
+    private Number mNewNb = new Number(0);
     private TextView mDrawTitle;
-
+    private ArrayList<Number> draw = new ArrayList<Number>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,11 +49,21 @@ public class DrawTrackingActivity extends AppCompatActivity
         mNumberPicker2 = findViewById(R.id.activity_draw_picker2);
         mNumberDrewText = findViewById(R.id.activity_draw_numberDrew);
         mDrawTitle = findViewById(R.id.activity_draw_title);
+        mAddButton = findViewById(R.id.activity_draw_addButton);
+        mPos1List = findViewById(R.id.activity_draw_pos1List);
+        mPos2List = findViewById(R.id.activity_draw_pos2List);
+        mPos3List = findViewById(R.id.activity_draw_pos3List);
+        mPos4List = findViewById(R.id.activity_draw_pos4List);
+        mPos5List = findViewById(R.id.activity_draw_pos5List);
+
 
         Intent intent = getIntent();
         if(intent != null)
         {
-            mDrawTitle.setText(intent.getStringExtra("mDrawObject"));
+            //mDrawTitle.setText(intent.getStringExtra("mDrawObject"));
+            Tirage mDraw = (Tirage) intent.getSerializableExtra("mDrawObject");
+            assert mDraw != null;
+            mDrawTitle.setText(mDraw.getTitle());
         }
 
 
@@ -172,8 +191,41 @@ public class DrawTrackingActivity extends AppCompatActivity
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
             {
-                if(actionId == EditorInfo.IME_ACTION_DONE) mNumberDrewText.clearFocus();
+                if(actionId == EditorInfo.IME_ACTION_DONE) {
+                    mNumberDrewText.clearFocus();
+                    mAddButton.performClick();
+                }
                 return false;
+            }
+        });
+
+        mAddButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                draw.add(mNumber);
+                for(int i = 0; i < draw.size(); i++)  mNewNb = draw.get(i);
+
+                switch(draw.size())
+                {
+                    case 1:
+                        mPos1List.setText(String.valueOf(mNewNb.getNumber()));
+                        break;
+                    case 2:
+                        mPos2List.setText(String.valueOf(mNewNb.getNumber()));
+                        break;
+                    case 3:
+                        mPos3List.setText(String.valueOf(mNewNb.getNumber()));
+                        break;
+                    case 4:
+                        mPos4List.setText(String.valueOf(mNewNb.getNumber()));
+                        break;
+                    case 5:
+                        mPos5List.setText(String.valueOf(mNewNb.getNumber()));
+                        break;
+                    default:
+                }
             }
         });
     }

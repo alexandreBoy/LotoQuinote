@@ -111,7 +111,8 @@ public class MainActivity extends AppCompatActivity
                    Object o = cb.getTag();
                    Tirage mDraw = (Tirage) o;
                    Intent drawTrackingActivity = new Intent(MainActivity.this, DrawTrackingActivity.class);
-                   drawTrackingActivity.putExtra("mDrawObject", mDraw.getTitle());
+                   //drawTrackingActivity.putExtra("mDrawObject", mDraw.getTitle());
+                   drawTrackingActivity.putExtra("mDrawObject", mDraw);
                    // Permet de lancer l'activité "DrawTackingActivity" qui affiche la vue de suivi de tirage
                    startActivity(drawTrackingActivity);
                }else{

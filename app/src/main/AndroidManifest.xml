@@ -10,7 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controller.DrawListActivity"></activity>
-        <activity android:name=".controller.ModifyPopUpActivity"></activity>
+        <activity android:name=".controller.ModifyPopUpActivity"
+            android:theme="@style/AppTheme.PopUpTheme">
+        </activity>
+
+
+>>>>>>> 1cc3a46... Mise en place des éléments graphiques pour la pop-up Modification/Suppression.
         <activity android:name=".controller.DrawTrackingActivity" />
         <activity android:name=".controller.MainActivity">
             <intent-filter>

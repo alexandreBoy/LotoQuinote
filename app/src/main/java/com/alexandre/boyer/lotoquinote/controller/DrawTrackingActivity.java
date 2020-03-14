@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class DrawTrackingActivity extends AppCompatActivity
     private Button mPos3List;
     private Button mPos4List;
     private Button mPos5List;
+    private ImageButton mPos6List;
     private NumberPicker mNumberPicker1;
     private NumberPicker mNumberPicker2;
     private EditText mNumberDrewText;
@@ -55,6 +57,7 @@ public class DrawTrackingActivity extends AppCompatActivity
         mPos3List = findViewById(R.id.activity_draw_pos3List);
         mPos4List = findViewById(R.id.activity_draw_pos4List);
         mPos5List = findViewById(R.id.activity_draw_pos5List);
+        mPos6List = findViewById(R.id.activity_draw_pos6List);
 
 
         Intent intent = getIntent();
@@ -226,6 +229,16 @@ public class DrawTrackingActivity extends AppCompatActivity
                         break;
                     default:
                 }
+            }
+        });
+
+        mPos6List.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent drawListActivity = new Intent(DrawTrackingActivity.this, DrawListActivity.class);
+                startActivity(drawListActivity);
             }
         });
     }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Number;
@@ -229,6 +231,10 @@ public class DrawTrackingActivity extends AppCompatActivity
                         break;
                     default:
                 }
+
+                Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                toast.show();
             }
         });
 

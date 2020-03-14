@@ -1,5 +1,6 @@
 package com.alexandre.boyer.lotoquinote.controller;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     private List<Tirage> draws = new ArrayList<>();
     private Context mContext = this;
     private boolean mMode; // Booléen indiquant le mode d'affichage de la liste : True --> Edition/Suppression, False --> Affichage simple
+    public static final int MODIFY_POPUP = 1;
 
 
     @Override
@@ -153,11 +155,43 @@ public class MainActivity extends AppCompatActivity
                 Tirage mDraw = (Tirage) o;
                 Intent modifyIntent = new Intent(MainActivity.this, ModifyPopUpActivity.class);
                 modifyIntent.putExtra("currentDraw", mDraw);
-                startActivity(modifyIntent);
+                modifyIntent.putExtra("position",position);
+                startActivityForResult(modifyIntent,MODIFY_POPUP);
 
 
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==MODIFY_POPUP){
+            if(data.hasExtra("deletedDraw") && data.getIntExtra("deletedDraw",1)==1){
+                int posDraw = data.getIntExtra("position",-1);
+                if(posDraw == -1){
+                    Log.d("MODIFY : ","position incorrecte !");
+                }else{
+                    draws.remove(posDraw);
+                    mTirageAdapter.notifyDataSetChanged();
+                }
+
+            }else{
+                if(data.hasExtra("modifiedDraw")){
+                    Tirage newDraw = (Tirage) data.getSerializableExtra("modifiedDraw");
+                    int posDraw = data.getIntExtra("position",-1);
+                    if(posDraw == -1){
+                        Log.d("MODIFY : ","position incorrecte !");
+                    }else{
+                        draws.set(posDraw,newDraw);
+                        mTirageAdapter.notifyDataSetChanged();
+                        Log.d("MODIFY :","Modification sauvegardée !");
+
+                    }
+                }
+            }
+        }
     }
 }

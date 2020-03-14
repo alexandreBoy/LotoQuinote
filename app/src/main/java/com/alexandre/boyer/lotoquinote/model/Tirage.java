@@ -31,13 +31,13 @@ public class Tirage implements Serializable
 
     public void setTitle(String title)
     {
-        title = title;
+        this.title = title;
     }
 
     @SuppressLint("SimpleDateFormat")
     public String getDate()
     {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy ' 'H:m");
         date = formatter.format(today);
         return date;
     }

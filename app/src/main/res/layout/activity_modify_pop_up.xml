@@ -21,11 +21,18 @@
         app:layout_constraintTop_toTopOf="@id/guideline" />
 
     <TextView
+        android:id="@+id/activity_modify_draw_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date de modification : "
+        app:layout_constraintLeft_toLeftOf="@id/guideline3"
+        app:layout_constraintTop_toTopOf="@id/guideline2" />
+
+    <TextView
         android:id="@+id/activity_modify_draw_date_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date de modification :"
-        app:layout_constraintLeft_toLeftOf="@id/guideline3"
+        app:layout_constraintLeft_toRightOf="@id/activity_modify_draw_date"
         app:layout_constraintTop_toTopOf="@id/guideline2" />
 
     <Button

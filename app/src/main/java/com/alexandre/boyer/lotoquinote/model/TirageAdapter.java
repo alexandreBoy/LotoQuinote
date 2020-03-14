@@ -79,7 +79,7 @@ public class TirageAdapter extends ArrayAdapter<Tirage>{
 
         Tirage currentDraw = drawsList.get(position);
         holder.drawName.setText(currentDraw.getTitle());
-        holder.checkBox.setTag(currentDraw);
+        holder.checkBox.setTag(currentDraw);// à supprimer, à remplacer par : holder.drawName.setTag(currentDraw);
         holder.checkBox.setVisibility(View.GONE);
         holder.checkBox.setChecked(mCheckStates.get(position,false));
         return convertView;

@@ -14,4 +14,7 @@
     <string name="ContentDescriptionImageButton3">Add</string>
     <string name="autoFillHints">Entrez un numéro</string>
     <string name="drawTitle">Titre du tirage</string>
+    <string name="drawListSort">Trier par :</string>
+    <string name="drawListBackButton">Retour</string>
+    <string name="drawListHomeButton">Accueil</string>
 </resources>

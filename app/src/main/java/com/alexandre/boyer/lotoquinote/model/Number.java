@@ -1,9 +1,11 @@
 package com.alexandre.boyer.lotoquinote.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Alexandre BOYER on 09/03/2020.
  */
-public class Number
+public class Number implements Serializable
 {
     private int number;
 

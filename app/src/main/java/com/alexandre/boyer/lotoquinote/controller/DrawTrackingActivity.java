@@ -253,7 +253,7 @@ public class DrawTrackingActivity extends AppCompatActivity
                     }
 
 
-                    Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(getApplicationContext(),"Numéro " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
                     toast.show();
 
@@ -270,14 +270,14 @@ public class DrawTrackingActivity extends AppCompatActivity
                 int deletedNumber = mDraw.getNumberAt(mDraw.getDraw().size()-1).getNumber();
 
                 mDraw.deleteNumber();
-                Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + deletedNumber + " supprimé de la liste", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(),"Numéro " + deletedNumber + " supprimé de la liste", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
                 toast.show();
                 switch(mDraw.getDraw().size())
                 {
                     case 0:
                         mPos1List.setText("");
-                        toast = Toast.makeText(getApplicationContext(),"Il n'y a pas de nombres pour ce tirage.", Toast.LENGTH_SHORT);
+                        toast = Toast.makeText(getApplicationContext(),"Il n'y a pas de numéros pour ce tirage.", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
                         toast.show();
                         break;
@@ -320,6 +320,7 @@ public class DrawTrackingActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Intent drawListActivity = new Intent(DrawTrackingActivity.this, DrawListActivity.class);
+                drawListActivity.putExtra("drawList", mDraw);
                 startActivity(drawListActivity);
             }
         });

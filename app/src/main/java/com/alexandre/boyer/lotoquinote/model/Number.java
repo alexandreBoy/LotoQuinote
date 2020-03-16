@@ -18,4 +18,8 @@ public class Number
     {
         this.number = number;
     }
+
+    public String toString(){
+        return Integer.toString(this.number);
+    }
 }

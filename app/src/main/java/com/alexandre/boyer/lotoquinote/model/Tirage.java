@@ -17,11 +17,18 @@ public class Tirage implements Serializable
     Date today = new Date();
     ArrayList <Number> draw;
 
+    public Tirage(){
+        this.title = "Untitled";
+        this.today = today;
+        this.draw = new ArrayList<>();
+    }
+
 
     public Tirage(String title, Date today)
     {
         this.title = title;
         this.today = today;
+        this.draw = new ArrayList<>();
     }
 
     public String getTitle()
@@ -47,6 +54,14 @@ public class Tirage implements Serializable
         this.today = new Date();
     }
 
+    public ArrayList<Number> getDraw(){
+        return draw;
+    }
+
+    public void setDraw(ArrayList<Number> draw){
+        this.draw = draw;
+    }
+
     // Ajouter un nombre à la liste
     public void addNumber(Number n)
     {
@@ -60,9 +75,17 @@ public class Tirage implements Serializable
             draw.remove(draw.size() - 1);
     }
 
+
     // Récupérer un nombre situé à un index i
     public Number getNumberAt(int i)
     {
         return draw.get(i);
+    }
+
+    //Méthode qui permet de copier un tirage
+    public void copy(Tirage otherDraw){
+        this.setTitle(otherDraw.getTitle());
+        this.setDate(new Date());
+        this.setDraw(otherDraw.getDraw());
     }
 }

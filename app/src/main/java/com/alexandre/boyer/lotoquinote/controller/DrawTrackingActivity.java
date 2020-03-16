@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.alexandre.boyer.lotoquinote.model.Tirage;
 import com.alexandre.boyer.lotoquinote.model.Util;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DrawTrackingActivity extends AppCompatActivity
 {
@@ -40,7 +42,7 @@ public class DrawTrackingActivity extends AppCompatActivity
     private Number mNumber = new Number(1);
     private Number mNewNb = new Number(0);
     private TextView mDrawTitle;
-    private ArrayList<Number> draw = new ArrayList<Number>();
+    private Tirage mDraw = new Tirage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,8 +68,11 @@ public class DrawTrackingActivity extends AppCompatActivity
         if(intent != null)
         {
             //mDrawTitle.setText(intent.getStringExtra("mDrawObject"));
-            Tirage mDraw = (Tirage) intent.getSerializableExtra("mDrawObject");
-            assert mDraw != null;
+            Tirage originalDraw = (Tirage) intent.getSerializableExtra("mDrawObject");
+            assert originalDraw != null;
+            //Ici, on ne fait pas de mDraw = draw, car l'objet ne sera pas dupliqué
+            //On utilisera la méthode copy() de la classe Tirage qui permet de faire cela
+            mDraw.copy(originalDraw);
             mDrawTitle.setText(mDraw.getTitle());
         }
 
@@ -209,11 +214,10 @@ public class DrawTrackingActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                if(draw.size() == 0) // gestion liste vide
+                /*if(mDraw.getDraw().size() == 0) // gestion liste vide
                 {
-                    draw.add(mNumber);
-                    mNewNb = draw.get(0);
-                    mPos1List.setText(String.valueOf(mNewNb.getNumber()));
+                    mDraw.addNumber(mNumber);
+                    mPos1List.setText(String.valueOf();
                 }
                 else // draw.size() != 0
                 {
@@ -248,13 +252,52 @@ public class DrawTrackingActivity extends AppCompatActivity
                             }
                         }
                     }
+                }*/
+
+                mDraw.addNumber(mNumber);
+
+                switch(mDraw.getDraw().size())
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        break;
+                    case 2:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        break;
+                    case 3:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                        break;
+                    case 4:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                        mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                        break;
+                    default:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                        mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                        mPos5List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-5).toString());
                 }
 
 
+                for(int k = 0; k<mDraw.getDraw().size(); k++){
+                    Log.d("DRAWTRCK","Nombre "+k+" : " + mDraw.getNumberAt(k).toString());
+                }
+                Log.d("DRAWTRCK",Integer.toString(mDraw.getDraw().size()));
 
                 Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
                 toast.show();
+
+                //On créer ensuite une nouvelle instance de l'objet Number
+                mNumber = new Number(mNumberPicker1.getValue()*10 + mNumberPicker2.getValue());
             }
         });
 

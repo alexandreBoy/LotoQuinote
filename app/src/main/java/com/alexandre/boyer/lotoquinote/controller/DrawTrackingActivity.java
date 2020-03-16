@@ -209,28 +209,48 @@ public class DrawTrackingActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                draw.add(mNumber);
-                for(int i = 0; i < draw.size(); i++)  mNewNb = draw.get(i);
-
-                switch(draw.size())
+                if(draw.size() == 0) // gestion liste vide
                 {
-                    case 1:
-                        mPos1List.setText(String.valueOf(mNewNb.getNumber()));
-                        break;
-                    case 2:
-                        mPos2List.setText(String.valueOf(mNewNb.getNumber()));
-                        break;
-                    case 3:
-                        mPos3List.setText(String.valueOf(mNewNb.getNumber()));
-                        break;
-                    case 4:
-                        mPos4List.setText(String.valueOf(mNewNb.getNumber()));
-                        break;
-                    case 5:
-                        mPos5List.setText(String.valueOf(mNewNb.getNumber()));
-                        break;
-                    default:
+                    draw.add(mNumber);
+                    mNewNb = draw.get(0);
+                    mPos1List.setText(String.valueOf(mNewNb.getNumber()));
                 }
+                else // draw.size() != 0
+                {
+                    for(int i = 0; i < draw.size(); i++) // on parcours la liste
+                    {
+                        // on regarde si le numéro qu'on veut ajouter ne se trouve pas déjà dans la liste
+
+                        if(draw.get(i) == mNumber) // le numéro se trouve dans la liste
+                        {
+                            System.out.println("Le numéro se trouve déjà dans la liste");
+                        }
+                        else // le numéro ne se trouve pas dans la liste
+                        {
+                            draw.add(mNumber);
+                            mNewNb = mNumber;
+
+                            switch(draw.size())
+                            {
+                                case 2:
+                                    mPos2List.setText(String.valueOf(mNewNb.getNumber()));
+                                    break;
+                                case 3:
+                                    mPos3List.setText(String.valueOf(mNewNb.getNumber()));
+                                    break;
+                                case 4:
+                                    mPos4List.setText(String.valueOf(mNewNb.getNumber()));
+                                    break;
+                                case 5:
+                                    mPos5List.setText(String.valueOf(mNewNb.getNumber()));
+                                    break;
+                                default:
+                            }
+                        }
+                    }
+                }
+
+
 
                 Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL,0,32);

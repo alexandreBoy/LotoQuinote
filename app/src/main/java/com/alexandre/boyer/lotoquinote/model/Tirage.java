@@ -48,13 +48,13 @@ public class Tirage implements Serializable
     }
 
     // Ajouter un nombre à la liste
-    public void addNumber(Number n, ArrayList<Number> draw)
+    public void addNumber(Number n)
     {
         draw.add(n);
     }
 
     // Supprimer le dernier nombre ajouté à la liste
-    public void deleteNumber(ArrayList<Number> draw)
+    public void deleteNumber()
     {
         if(draw.size() > 0)
             draw.remove(draw.size() - 1);

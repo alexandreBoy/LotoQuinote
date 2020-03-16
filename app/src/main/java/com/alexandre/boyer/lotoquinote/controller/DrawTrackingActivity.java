@@ -267,7 +267,50 @@ public class DrawTrackingActivity extends AppCompatActivity
         mDeleteNumberPos1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                int deletedNumber = mDraw.getNumberAt(mDraw.getDraw().size()-1).getNumber();
 
+                mDraw.deleteNumber();
+                Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + deletedNumber + " supprimé de la liste", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                toast.show();
+                switch(mDraw.getDraw().size())
+                {
+                    case 0:
+                        mPos1List.setText("");
+                        toast = Toast.makeText(getApplicationContext(),"Il n'y a pas de nombres pour ce tirage.", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                        toast.show();
+                        break;
+                    case 1:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText("");
+                        break;
+                    case 2:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        mPos3List.setText("");
+                        break;
+                    case 3:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                        mPos4List.setText("");
+                        break;
+                    case 4:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                        mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                        mPos5List.setText("");
+                        break;
+                    default:
+                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                        mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                        mPos5List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-5).toString());
+                        break;
+                }
             }
         });
 

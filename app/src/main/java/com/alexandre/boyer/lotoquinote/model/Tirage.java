@@ -31,6 +31,13 @@ public class Tirage implements Serializable
         this.draw = new ArrayList<>();
     }
 
+    //Méthode qui permet de copier un tirage
+    public void copy(Tirage otherDraw){
+        this.setTitle(otherDraw.getTitle());
+        this.setDate(new Date());
+        this.setDraw(otherDraw.getDraw());
+    }
+
     public String getTitle()
     {
         return title;
@@ -75,17 +82,18 @@ public class Tirage implements Serializable
             draw.remove(draw.size() - 1);
     }
 
-
     // Récupérer un nombre situé à un index i
     public Number getNumberAt(int i)
     {
         return draw.get(i);
     }
 
-    //Méthode qui permet de copier un tirage
-    public void copy(Tirage otherDraw){
-        this.setTitle(otherDraw.getTitle());
-        this.setDate(new Date());
-        this.setDraw(otherDraw.getDraw());
+    public boolean isNumberDrawn(Number n){
+        boolean res = false;
+        for(Number nb : draw){
+            if(n.getNumber()==nb.getNumber()) res = true;
+        }
+        return res;
     }
+
 }

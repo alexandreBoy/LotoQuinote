@@ -36,11 +36,11 @@ public class DrawTrackingActivity extends AppCompatActivity
     private Button mPos4List;
     private Button mPos5List;
     private ImageButton mPos6List;
+    private ImageButton mDeleteNumberPos1;
     private NumberPicker mNumberPicker1;
     private NumberPicker mNumberPicker2;
     private EditText mNumberDrewText;
     private Number mNumber = new Number(1);
-    private Number mNewNb = new Number(0);
     private TextView mDrawTitle;
     private Tirage mDraw = new Tirage();
 
@@ -62,6 +62,7 @@ public class DrawTrackingActivity extends AppCompatActivity
         mPos4List = findViewById(R.id.activity_draw_pos4List);
         mPos5List = findViewById(R.id.activity_draw_pos5List);
         mPos6List = findViewById(R.id.activity_draw_pos6List);
+        mDeleteNumberPos1 = findViewById(R.id.activity_draw_deleteNumberPos1);
 
 
         Intent intent = getIntent();
@@ -214,90 +215,59 @@ public class DrawTrackingActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                /*if(mDraw.getDraw().size() == 0) // gestion liste vide
-                {
+                if(mDraw.isNumberDrawn(mNumber)){
+                    Toast toast = Toast.makeText(getApplicationContext(),"Le nombre "+mNumber.toString()+" a déjà été tiré", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                    toast.show();
+                }else{
                     mDraw.addNumber(mNumber);
-                    mPos1List.setText(String.valueOf();
-                }
-                else // draw.size() != 0
-                {
-                    for(int i = 0; i < draw.size(); i++) // on parcours la liste
+                    switch(mDraw.getDraw().size())
                     {
-                        // on regarde si le numéro qu'on veut ajouter ne se trouve pas déjà dans la liste
-
-                        if(draw.get(i) == mNumber) // le numéro se trouve dans la liste
-                        {
-                            System.out.println("Le numéro se trouve déjà dans la liste");
-                        }
-                        else // le numéro ne se trouve pas dans la liste
-                        {
-                            draw.add(mNumber);
-                            mNewNb = mNumber;
-
-                            switch(draw.size())
-                            {
-                                case 2:
-                                    mPos2List.setText(String.valueOf(mNewNb.getNumber()));
-                                    break;
-                                case 3:
-                                    mPos3List.setText(String.valueOf(mNewNb.getNumber()));
-                                    break;
-                                case 4:
-                                    mPos4List.setText(String.valueOf(mNewNb.getNumber()));
-                                    break;
-                                case 5:
-                                    mPos5List.setText(String.valueOf(mNewNb.getNumber()));
-                                    break;
-                                default:
-                            }
-                        }
+                        case 0:
+                            break;
+                        case 1:
+                            mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                            break;
+                        case 2:
+                            mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                            mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                            break;
+                        case 3:
+                            mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                            mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                            mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                            break;
+                        case 4:
+                            mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                            mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                            mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                            mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                            break;
+                        default:
+                            mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                            mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                            mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                            mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                            mPos5List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-5).toString());
+                            break;
                     }
-                }*/
 
-                mDraw.addNumber(mNumber);
 
-                switch(mDraw.getDraw().size())
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
-                        break;
-                    case 2:
-                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
-                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
-                        break;
-                    case 3:
-                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
-                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
-                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
-                        break;
-                    case 4:
-                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
-                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
-                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
-                        mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
-                        break;
-                    default:
-                        mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
-                        mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
-                        mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
-                        mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
-                        mPos5List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-5).toString());
+                    Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                    toast.show();
+
+                    //On créer ensuite une nouvelle instance de l'objet Number
+                    mNumber = new Number(mNumberPicker1.getValue()*10 + mNumberPicker2.getValue());
+
                 }
+            }
+        });
 
+        mDeleteNumberPos1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
 
-                for(int k = 0; k<mDraw.getDraw().size(); k++){
-                    Log.d("DRAWTRCK","Nombre "+k+" : " + mDraw.getNumberAt(k).toString());
-                }
-                Log.d("DRAWTRCK",Integer.toString(mDraw.getDraw().size()));
-
-                Toast toast = Toast.makeText(getApplicationContext(),"Nombre " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
-                toast.show();
-
-                //On créer ensuite une nouvelle instance de l'objet Number
-                mNumber = new Number(mNumberPicker1.getValue()*10 + mNumberPicker2.getValue());
             }
         });
 

@@ -17,4 +17,10 @@
     <string name="drawListSort">Trier par :</string>
     <string name="drawListBackButton">Retour</string>
     <string name="drawListHomeButton">Accueil</string>
+    <string-array name="sort_array">
+        <item>Ordre de tirage</item>
+        <item>Dizaines</item>
+        <item>Ordre croissant</item>
+        <item>Ordre décroissant</item>
+    </string-array>
 </resources>

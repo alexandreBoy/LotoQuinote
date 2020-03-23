@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.alexandre.boyer.lotoquinote.R;
@@ -26,6 +28,7 @@ public class DrawListActivity extends AppCompatActivity
 {
     private Button mBackButton;
     private Button mHomeButton;
+    private Spinner mSpinner;
     private Tirage mDraw = new Tirage();
 
     @Override
@@ -36,6 +39,7 @@ public class DrawListActivity extends AppCompatActivity
 
         mBackButton = findViewById(R.id.drawListBackButton);
         mHomeButton = findViewById(R.id.drawListHomeButton);
+        mSpinner = findViewById(R.id.drawListSpinner);
 
         GridView gv = (GridView) findViewById(R.id.drawListGridView);
 
@@ -70,5 +74,9 @@ public class DrawListActivity extends AppCompatActivity
 
         ArrayAdapter<Number> gridViewArrayAdapter = new ArrayAdapter<Number>(this, android.R.layout.simple_list_item_1, mDraw.getDraw());
         gv.setAdapter(gridViewArrayAdapter);
+
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.sort_array, android.R.layout.simple_spinner_dropdown_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(spinnerAdapter);
     }
 }

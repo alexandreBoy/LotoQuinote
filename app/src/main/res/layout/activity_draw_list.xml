@@ -49,26 +49,52 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="350dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/drawListGuideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="70dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/drawListGuideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="320dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/drawListGuideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="410dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/drawListGuideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="460dp" />
+
 
     <TextView
         android:id="@+id/drawListSortText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/drawListSort"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        app:layout_constraintTop_toBottomOf="@+id/drawListGridView"
-        app:layout_constraintLeft_toLeftOf="@+id/drawListGuideline1"/>
+        app:layout_constraintTop_toBottomOf="@+id/drawListGuideline5"
+        app:layout_constraintBottom_toTopOf="@+id/drawListGuideline6"
+        app:layout_constraintLeft_toLeftOf="@+id/drawListGuideline3"/>
     
     <Spinner
         android:id="@+id/drawListSpinner"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        app:layout_constraintTop_toBottomOf="@+id/drawListGridView"
-        app:layout_constraintLeft_toLeftOf="@+id/drawListSortText"
-        app:layout_constraintRight_toRightOf="@+id/drawListGuideline2" />
+        app:layout_constraintTop_toBottomOf="@+id/drawListGuideline5"
+        app:layout_constraintBottom_toTopOf="@+id/drawListGuideline6"
+        app:layout_constraintLeft_toRightOf="@+id/drawListSortText"
+        app:layout_constraintRight_toRightOf="@+id/drawListGuideline4" />
     
     <Button
         android:id="@+id/drawListBackButton"

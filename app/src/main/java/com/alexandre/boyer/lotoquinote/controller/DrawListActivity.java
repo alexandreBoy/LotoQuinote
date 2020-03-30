@@ -99,12 +99,12 @@ public class DrawListActivity extends AppCompatActivity
                         }
                         break;
                     case 1:
-                        System.out.println("Dizaines");
+                        System.out.println("Ordre croissant");
+                        mDraw.ascendingSort(mDraw.getDraw());
+                        ArrayAdapter<Number> gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.getDraw());
+                        gv.setAdapter(gridViewArrayAdapter);
                         break;
                     case 2:
-                        System.out.println("Ordre croissant");
-                        break;
-                    case 3:
                         System.out.println("Ordre décroissant");
                         break;
                     default:

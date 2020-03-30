@@ -9,13 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.DrawListActivity"></activity>
+        <activity android:name=".controller.DrawListActivity" />
         <activity android:name=".controller.ModifyPopUpActivity"
-            android:theme="@style/AppTheme.PopUpTheme">
-        </activity>
+            android:theme="@style/AppTheme.PopUpTheme"
+        />
 
 
->>>>>>> 1cc3a46... Mise en place des éléments graphiques pour la pop-up Modification/Suppression.
         <activity android:name=".controller.DrawTrackingActivity" />
         <activity android:name=".controller.MainActivity">
             <intent-filter>

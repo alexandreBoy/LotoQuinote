@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 /**
@@ -96,7 +97,7 @@ public class Tirage implements Serializable
         return res;
     }
 
-    public void ascendingSort(ArrayList<Number> draw)
+    /*public void ascendingSort(ArrayList<Number> draw)
             // tri croissant : méthode de tri par sélection
     {
         for(int i = 0; i < draw.size()-1; i++)
@@ -115,5 +116,49 @@ public class Tirage implements Serializable
             numberI = numberM;
             numberM = x;
         }
+    }*/
+
+    public ArrayList<Number> drawedSort(){
+        //On créer la ArrayList à retourner
+        ArrayList<Number> sorted_draw = new ArrayList<>();
+        //On copie la ArrayList draw dans la nouvelle ArrayList
+        for(Number nb : draw){
+            sorted_draw.add(nb);
+        }
+
+        //On trie la ArrayList à retourner
+        Collections.reverse(sorted_draw);
+        //On retourne ensuite le tirage trié*/
+        return sorted_draw;
     }
+
+    public ArrayList<Number> ascendingSort(){
+        //On créer la ArrayList à retourner
+        ArrayList<Number> sorted_draw = new ArrayList<>();
+        //On copie la ArrayList draw dans la nouvelle ArrayList
+        for(Number nb : draw){
+            sorted_draw.add(nb);
+        }
+
+        //On trie la ArrayList à retourner
+        Collections.sort(sorted_draw);
+        //On retourne ensuite le tirage trié*/
+        return sorted_draw;
+    }
+
+    public ArrayList<Number> descendingSort(){
+        //On créer la ArrayList à retourner
+        ArrayList<Number> sorted_draw = new ArrayList<>();
+        //On copie la ArrayList draw dans la nouvelle ArrayList
+        for(Number nb : draw){
+            sorted_draw.add(nb);
+        }
+
+        //On trie la ArrayList à retourner
+        Collections.sort(sorted_draw,Collections.<Number>reverseOrder());
+        //On retourne ensuite le tirage trié*/
+        return sorted_draw;
+    }
+
+
 }

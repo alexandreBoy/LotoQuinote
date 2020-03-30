@@ -32,7 +32,7 @@ public class DrawListActivity extends AppCompatActivity
     private Button mHomeButton;
     private Spinner mSpinner;
     private Tirage mDraw = new Tirage();
-    private boolean reversed = false; // pour savoir si la liste du tirage a été inversée ou non
+    //private boolean reversed = false; // pour savoir si la liste du tirage a été inversée ou non
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -90,22 +90,18 @@ public class DrawListActivity extends AppCompatActivity
                 switch(position)
                 {
                     case 0:
-                        if(!reversed)
-                        {
-                            Collections.reverse(mDraw.getDraw());
-                            ArrayAdapter<Number> gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.getDraw());
-                            gv.setAdapter(gridViewArrayAdapter);
-                            reversed = true;
-                        }
+                        ArrayAdapter<Number> gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.drawedSort());
+                        gv.setAdapter(gridViewArrayAdapter);
                         break;
                     case 1:
                         System.out.println("Ordre croissant");
-                        mDraw.ascendingSort(mDraw.getDraw());
-                        ArrayAdapter<Number> gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.getDraw());
+                        gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.ascendingSort());
                         gv.setAdapter(gridViewArrayAdapter);
                         break;
                     case 2:
                         System.out.println("Ordre décroissant");
+                        gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.descendingSort());
+                        gv.setAdapter(gridViewArrayAdapter);
                         break;
                     default:
                         break;

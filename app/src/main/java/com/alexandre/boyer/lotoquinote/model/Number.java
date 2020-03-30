@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Alexandre BOYER on 09/03/2020.
  */
-public class Number implements Serializable
+public class Number implements Serializable,Comparable<Number>
 {
     private int number;
 
@@ -23,5 +23,10 @@ public class Number implements Serializable
 
     public String toString(){
         return Integer.toString(this.number);
+    }
+
+    @Override
+    public int compareTo(Number o){
+        return(this.number - o.number);
     }
 }

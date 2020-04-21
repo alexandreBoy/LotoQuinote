@@ -43,6 +43,7 @@ public class DrawTrackingActivity extends AppCompatActivity
     private Number mNumber = new Number(1);
     private TextView mDrawTitle;
     private Tirage mDraw = new Tirage();
+    public static final int DRAW_TRACKING = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -64,6 +65,9 @@ public class DrawTrackingActivity extends AppCompatActivity
         mPos6List = findViewById(R.id.activity_draw_pos6List);
         mDeleteNumberPos1 = findViewById(R.id.activity_draw_deleteNumberPos1);
 
+        //On prépare ici l'intent à renvoyer;
+        final Intent modifiedNumbers = new Intent();
+
 
         Intent intent = getIntent();
         if(intent != null)
@@ -77,13 +81,20 @@ public class DrawTrackingActivity extends AppCompatActivity
             mDrawTitle.setText(mDraw.getTitle());
         }
 
+        //Cette déclaration est en dehors du if car même si l'intent est null, la variable positionDraw prendra la valeur -1 signalant l'erreur
+        final int positionDraw = intent.getIntExtra("position",-1);
 
+        //Permet d'afficher les derniers nombres tirés si le tirage a déjà été entamé
+        refreshView();
 
         mFinishButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                modifiedNumbers.putExtra("modifiedNumbers",mDraw);
+                modifiedNumbers.putExtra("position", positionDraw);
+                setResult(DRAW_TRACKING,modifiedNumbers);
                 finish();
             }
         });
@@ -324,5 +335,38 @@ public class DrawTrackingActivity extends AppCompatActivity
                 startActivity(drawListActivity);
             }
         });
+    }
+
+    private void refreshView(){
+        switch(mDraw.getDraw().size())
+        {
+            case 0:
+                break;
+            case 1:
+                mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                break;
+            case 2:
+                mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                break;
+            case 3:
+                mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                break;
+            case 4:
+                mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                break;
+            default:
+                mPos1List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-1).toString());
+                mPos2List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-2).toString());
+                mPos3List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-3).toString());
+                mPos4List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-4).toString());
+                mPos5List.setText(mDraw.getNumberAt(mDraw.getDraw().size()-5).toString());
+                break;
+        }
     }
 }

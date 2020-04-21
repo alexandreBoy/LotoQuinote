@@ -118,6 +118,7 @@ public class Tirage implements Serializable
         }
     }*/
 
+
     public ArrayList<Number> drawedSort(){
         //On créer la ArrayList à retourner
         ArrayList<Number> sorted_draw = new ArrayList<>();

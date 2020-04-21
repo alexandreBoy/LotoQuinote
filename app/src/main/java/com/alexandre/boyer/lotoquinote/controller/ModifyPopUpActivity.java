@@ -64,7 +64,7 @@ public class ModifyPopUpActivity extends AppCompatActivity{
         //On conserve le titre d'origine si les changements sont annulés :
         final String oldDrawTitle = currentDraw.getTitle();
 
-        //On prépare ici l'intent à renvoyer pour la sauce;
+        //On prépare ici l'intent à renvoyer;
         final Intent modifiedDraw = new Intent();
 
         //On règle ensuite un listener pour permettre la modification ou l'édition du tirage

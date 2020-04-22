@@ -185,21 +185,19 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         }
-        else{
-            if(requestCode == DRAW_TRACKING){
-                if(data.hasExtra("modifiedNumbers")){
-                    Tirage newDraw = (Tirage) data.getSerializableExtra("modifiedNumbers");
-                    int posDraw = data.getIntExtra("position", -1);
-                    if (posDraw == -1){
-                        Log.d("MODIFY : ", "position incorrecte !");
-                    } else{
-                        draws.set(posDraw, newDraw);
-                        mTirageAdapter.notifyDataSetChanged();
-                    }
-                    saveData();
-
+        else{ if(requestCode == DRAW_TRACKING){
+            if(data.hasExtra("modifiedNumbers")){
+                Tirage newDraw = (Tirage) data.getSerializableExtra("modifiedNumbers");
+                int posDraw = data.getIntExtra("position", -1);
+                if (posDraw == -1){
+                    Log.d("MODIFY : ", "position incorrecte !");
+                } else{
+                    draws.set(posDraw, newDraw);
+                    mTirageAdapter.notifyDataSetChanged();
                 }
+                saveData();
             }
+        }
         }
     }
 

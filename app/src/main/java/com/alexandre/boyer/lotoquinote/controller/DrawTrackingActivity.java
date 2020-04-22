@@ -83,6 +83,7 @@ public class DrawTrackingActivity extends AppCompatActivity
         //Permet d'afficher les derniers nombres tirés si le tirage a déjà été entamé
         refreshView();
 
+
         // Sauvegarde des données lors de l'appui sur le bouton "Terminer" et fin de l'activité courante pour revenir à l'accueil de l'application
         mFinishButton.setOnClickListener(new View.OnClickListener()
         {
@@ -344,7 +345,10 @@ public class DrawTrackingActivity extends AppCompatActivity
                 startActivity(drawListActivity);
             }
         });
+
     }
+
+
 
     // Permet de réafficher les 5 derniers numéros tirés si on quitte l'application et qu'on la relance
     private void refreshView(){
@@ -379,4 +383,16 @@ public class DrawTrackingActivity extends AppCompatActivity
                 break;
         }
     }
+
+    //Ici, on redéfinit la méthode appelé lorsque le bouton "Précédent" est appuyé. On renvoie ici un intent,
+    //car l'activité MainActivity attends un resultat
+    @Override
+    public void onBackPressed(){
+        //super.onBackPressed();
+        Intent i = new Intent();
+        setResult(DRAW_TRACKING,i);
+        finish();
+    }
+
+
 }

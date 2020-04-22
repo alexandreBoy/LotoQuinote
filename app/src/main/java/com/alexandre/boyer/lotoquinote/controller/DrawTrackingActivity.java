@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,9 +21,6 @@ import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Number;
 import com.alexandre.boyer.lotoquinote.model.Tirage;
 import com.alexandre.boyer.lotoquinote.model.Util;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 public class DrawTrackingActivity extends AppCompatActivity
 {

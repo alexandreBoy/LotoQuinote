@@ -2,19 +2,15 @@ package com.alexandre.boyer.lotoquinote.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alexandre.boyer.lotoquinote.R;
 import com.alexandre.boyer.lotoquinote.model.Tirage;
@@ -116,9 +112,5 @@ public class ModifyPopUpActivity extends AppCompatActivity{
                 finish();
             }
         });
-
-
-
-
     }
 }

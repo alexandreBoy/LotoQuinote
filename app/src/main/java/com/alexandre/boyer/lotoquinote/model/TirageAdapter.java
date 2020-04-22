@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,18 +58,9 @@ public class TirageAdapter extends ArrayAdapter<Tirage>{
             holder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.liste_tirages_items,null,true);
-            /*listItem = LayoutInflater.from(mContext).inflate(R.layout.liste_tirages_items, null, true);*/
             holder.checkBox = convertView.findViewById(R.id.activity_main_tirage_checkbox);
             holder.drawName = convertView.findViewById(R.id.activity_main_name_tirage_txt);
             convertView.setTag(holder);
-
-
-
-
-            /*Tirage currentDraw = drawsList.get(position);
-
-            TextView drawname = listItem.findViewById(R.id.activity_main_name_tirage_txt);
-            drawname.setText(currentDraw.getTitle());*/
         }else{
             // La méthode getTag renvoie l'objet ViewHolder mis en tag à la vue
             holder = (ViewHolder) convertView.getTag();
@@ -83,10 +72,6 @@ public class TirageAdapter extends ArrayAdapter<Tirage>{
         holder.checkBox.setVisibility(View.GONE);
         holder.checkBox.setChecked(mCheckStates.get(position,false));
         return convertView;
-
-
-
-        /*return listItem;*/
         }
 
 

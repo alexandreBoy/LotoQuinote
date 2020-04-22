@@ -97,28 +97,6 @@ public class Tirage implements Serializable
         return res;
     }
 
-    /*public void ascendingSort(ArrayList<Number> draw)
-            // tri croissant : méthode de tri par sélection
-    {
-        for(int i = 0; i < draw.size()-1; i++)
-        {
-            // selction du minimum
-            int minimum = i;
-            for(int j = i+1; i < draw.size()-1; i++)
-            {
-                if((getNumberAt(j).getNumber()) < (getNumberAt(minimum).getNumber()))
-                    minimum = j;
-            }
-            // permutation de getNumberAt(minimum) et getNumberAt(i)
-            int x = getNumberAt(i).getNumber();
-            int numberI = getNumberAt(i).getNumber();
-            int numberM = getNumberAt(minimum).getNumber();
-            numberI = numberM;
-            numberM = x;
-        }
-    }*/
-
-
     public ArrayList<Number> drawedSort(){
         //On créer la ArrayList à retourner
         ArrayList<Number> sorted_draw = new ArrayList<>();

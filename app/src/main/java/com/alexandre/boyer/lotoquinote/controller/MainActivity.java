@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity{
     private ListView mListView;
     private Button mNewDrawButton;
     private CheckBox mDrawCheckbox;
-    private ImageButton mDeleteButton;
-    private ImageButton mEditButton;
     private TirageAdapter mTirageAdapter;
     private List<Tirage> draws = new ArrayList<>();
     private Context mContext = this;
@@ -55,18 +53,12 @@ public class MainActivity extends AppCompatActivity{
         mListView = findViewById(R.id.listView);
         mNewDrawButton = findViewById(R.id.newDraw);
         mDrawCheckbox = findViewById(R.id.activity_main_tirage_checkbox);
-        mDeleteButton = findViewById(R.id.deleteButton);
-        mEditButton = findViewById(R.id.editButton);
 
-        //On cache les ImageButton mDeleteButton et mEditButton
-        mDeleteButton.setVisibility(View.GONE);
-        mEditButton.setVisibility(View.GONE);
-
-
+        // Création de la liste des tirages
         mTirageAdapter = new TirageAdapter(this, (ArrayList<Tirage>) draws);
         mListView.setAdapter(mTirageAdapter);
 
-        mMode = false;
+        mMode = false; // affichage simple (pas en mode édition)
 
         //Chargement des tirages
         loadData();
@@ -76,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v){
                 mNewDrawButton.setEnabled(false);
 
+                // Timer de 2s après appui sur le bouton qui permet d'ajouter un tirage
                 Timer buttonTimer = new Timer();
                 buttonTimer.schedule(new TimerTask(){
                     @Override
@@ -89,6 +82,7 @@ public class MainActivity extends AppCompatActivity{
                     }
                 }, 2000);
 
+                // Création du tirage
                 Date today = new Date();
                 Tirage mDraw = new Tirage("Suivi du tirage n° " + (draws.size() + 1), today);
                 draws.add(mDraw);
@@ -102,7 +96,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-
+        // Gestion de la sélection d'un ou plusieurs tirages via les checkbox
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
@@ -135,6 +129,8 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        // Gestion de l'appui long sur un item de la liste :
+        // Lors d'un appui long l'activité ModifyPopUpActivity est lancée pour permettre l'édition du tirage sélectionné
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
@@ -157,6 +153,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    // Gestion de la persistance des données
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);

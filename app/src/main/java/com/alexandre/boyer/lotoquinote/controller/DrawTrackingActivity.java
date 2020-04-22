@@ -83,6 +83,7 @@ public class DrawTrackingActivity extends AppCompatActivity
         //Permet d'afficher les derniers nombres tirés si le tirage a déjà été entamé
         refreshView();
 
+        // Sauvegarde des données lors de l'appui sur le bouton "Terminer" et fin de l'activité courante pour revenir à l'accueil de l'application
         mFinishButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -95,6 +96,7 @@ public class DrawTrackingActivity extends AppCompatActivity
             }
         });
 
+        // Définition des valeurs minimales et maximales des NumberPicker
         mNumberPicker1.setMinValue(0);
         mNumberPicker1.setMaxValue(9);
         mNumberPicker2.setMinValue(0);
@@ -103,6 +105,7 @@ public class DrawTrackingActivity extends AppCompatActivity
         mNumberPicker1.setValue(0);
         mNumberPicker2.setValue(mNumber.getNumber());
 
+        // Gestion de la sélection des nombres dans les NumberPicker
         mNumberPicker1.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
         {
             @Override
@@ -116,6 +119,8 @@ public class DrawTrackingActivity extends AppCompatActivity
                     mNumberDrewText.setText(String.valueOf(mNumber.getNumber()));
                 }
                 else
+                    // Un numéro du lotoquine ne peut pas être supérieur à 90, on gère donc ce cas en "bloquant"
+                    // les NumberPicker pour qu'ils donnent tous le temps la valeur 90 quand la valeur choisit par l'utilisateur est supérieure à 90
                 {
                     mNumber.setNumber(90);
                     mNumberPicker1.setValue(9);
@@ -138,6 +143,7 @@ public class DrawTrackingActivity extends AppCompatActivity
                     mNumberDrewText.setText(String.valueOf(mNumber.getNumber()));
                 }
                 else
+                    // Même principe que précedemment
                 {
                     mNumber.setNumber(90);
                     mNumberPicker1.setValue(9);
@@ -147,6 +153,7 @@ public class DrawTrackingActivity extends AppCompatActivity
             }
         });
 
+
         mNumberDrewText.addTextChangedListener(new TextWatcher()
         {
             @Override
@@ -155,6 +162,7 @@ public class DrawTrackingActivity extends AppCompatActivity
 
             }
 
+            // Adaptation des nombres affichés dans les NumberPicker en fonction du nombre entré dans le EditText
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count)
             {
@@ -204,6 +212,7 @@ public class DrawTrackingActivity extends AppCompatActivity
             }
         });
 
+        // Gestion de l'ajout du nombre écrit dans le EditText lors du clique sur le bouton "ACTION_DONE" du clavier virtuel
         mNumberDrewText.setOnEditorActionListener(new TextView.OnEditorActionListener()
         {
             @Override
@@ -217,18 +226,20 @@ public class DrawTrackingActivity extends AppCompatActivity
             }
         });
 
+        // Gestion de l'ajout des nombres à la liste de tirage
         mAddButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                if(mDraw.isNumberDrawn(mNumber)){
+                if(mDraw.isNumberDrawn(mNumber)){ // si le nombre a déjà été tiré, cela est signalé par un toast
                     Toast toast = Toast.makeText(getApplicationContext(),"Le nombre "+mNumber.toString()+" a déjà été tiré", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
                     toast.show();
-                }else{
+                }else{ // sinon on ajoute le nombre à la liste
                     mDraw.addNumber(mNumber);
-                    switch(mDraw.getDraw().size())
+                    switch(mDraw.getDraw().size()) // permet d'afficher les 5 derniers nombres tirés dans les 5 cases situées en bas de cette activitée
+                            // le dernier nombre tiré est celui le plus à gauche
                     {
                         case 0:
                             break;
@@ -264,13 +275,14 @@ public class DrawTrackingActivity extends AppCompatActivity
                     toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
                     toast.show();
 
-                    //On créer ensuite une nouvelle instance de l'objet Number
+                    //On crée ensuite une nouvelle instance de l'objet Number
                     mNumber = new Number(mNumberPicker1.getValue()*10 + mNumberPicker2.getValue());
 
                 }
             }
         });
 
+        // Quand on clique sur la petite croix en dessous du dernier numéro tiré, on supprime ce numéro
         mDeleteNumberPos1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -280,7 +292,7 @@ public class DrawTrackingActivity extends AppCompatActivity
                 Toast toast = Toast.makeText(getApplicationContext(),"Numéro " + deletedNumber + " supprimé de la liste", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
                 toast.show();
-                switch(mDraw.getDraw().size())
+                switch(mDraw.getDraw().size()) // On décale ensuite les numéros
                 {
                     case 0:
                         mPos1List.setText("");
@@ -321,6 +333,7 @@ public class DrawTrackingActivity extends AppCompatActivity
             }
         });
 
+        // Quand on clique sur le "+" : passage à l'activité "DrawListActivity"
         mPos6List.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -333,6 +346,7 @@ public class DrawTrackingActivity extends AppCompatActivity
         });
     }
 
+    // Permet de réafficher les 5 derniers numéros tirés si on quitte l'application et qu'on la relance
     private void refreshView(){
         switch(mDraw.getDraw().size())
         {

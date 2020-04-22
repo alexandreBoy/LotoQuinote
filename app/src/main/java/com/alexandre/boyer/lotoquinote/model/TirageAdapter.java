@@ -15,6 +15,11 @@ import com.alexandre.boyer.lotoquinote.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    Cette classe permet de gérer la liste des tirages :
+    elle prend ainsi un ArrayList d'objet Tirage en paramètre
+*/
+
 public class TirageAdapter extends ArrayAdapter<Tirage>{
 
     private Context mContext;

@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity{
                 startActivityForResult(modifyIntent, MODIFY_POPUP);
 
 
-                return false;
+                return true;
             }
         });
 

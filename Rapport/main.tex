@@ -72,7 +72,7 @@ L'application Lotoquinote comporte trois vues :
 \end{itemize}
 \vspace{1em}
     \begin{minipage}{.6\textwidth}%
-    La vue de suivi de tirage permet de choisir le numéro qui a été tiré lors du tirage du loto-quine. Le numéro est choisit soit par le biais du NumberPicker ou soit en l'écrivant soit même grâce à l'EditText.
+    La vue de suivi de tirage permet de choisir le numéro qui a été tiré lors du tirage du loto-quine. Le numéro est choisit soit par le biais du NumberPicker ou soit en l'écrivant soi-même grâce à l'EditText.
     \vspace{1em}
     \newline
     Lors du clique sur le bouton "Ajouter", le numéro choisit est inséré à la liste des numéros tirés. Les cinq derniers numéros tirés de cette liste sont visibles dans les cases situées en bas de cette vue.
@@ -118,6 +118,20 @@ L'application Lotoquinote comporte trois vues :
 \section{Architecture du code}
 
 \subsection{Android}
+
+    \begin{minipage}{.6\textwidth}%
+    Le code de notre application suit l'architecture MVC \newline (Modèle, Vue, Contrôleur).
+    \vspace{1em}
+    \newline Ainsi, la partie "Contrôleur" contient les activités principales de notre application.
+    \vspace{1em}
+    \newline La partie "Modèle" contient les classes que nous utilisons pour définir les objets nécessaires à notre application.
+    \vspace{1em}
+    \newline Et la partie "Vue" représenté par le dossier "layout" contient les fichiers .xml qui permettent l'interaction entre l'application et l'utilisateur. 
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{.35\textwidth}%
+        \includegraphics[scale=0.5]{archiMVC.png}
+    \end{minipage}%
 
 \section{Quelques points délicats/intéressants}
 

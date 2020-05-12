@@ -209,7 +209,6 @@ public class MainActivity extends AppCompatActivity{
         String json = gson.toJson(draws);
         editor.putString("draws list",json);
         editor.apply();
-        Log.d("Coucou","SaveData est lance !");
     }
 
     private void loadData(){
@@ -227,8 +226,6 @@ public class MainActivity extends AppCompatActivity{
             mTirageAdapter = new TirageAdapter(mContext, (ArrayList<Tirage>) draws);
             mListView.setAdapter(mTirageAdapter);
         }
-
-        Log.d("Coucou","LoadData est lance !");
 
 
     }

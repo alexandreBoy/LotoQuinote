@@ -106,7 +106,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/drawListGuideline1"
         app:layout_constraintRight_toRightOf="@+id/drawListGuideline2"
         android:text="@string/drawListBackButton"
-        android:background="#c9edc3"
+        android:background="@drawable/custom_button"
         android:textAllCaps="false"
         android:textSize="20sp"/>
 

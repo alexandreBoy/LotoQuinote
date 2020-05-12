@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d7ceb2"
+    android:background="#FFF"
     tools:context=".controller.MainActivity">
 
     <TextView
@@ -40,10 +40,10 @@
 
     <Button
         android:id="@+id/newDraw"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="@string/createButton"
-        android:background="#a59e8c"
+        android:background="#c9edc3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

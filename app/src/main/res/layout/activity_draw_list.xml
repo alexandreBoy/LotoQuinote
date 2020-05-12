@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="#d7ceb2"
+    android:background="#FFF"
     tools:context=".controller.DrawListActivity" >
 
     <TextView
@@ -106,7 +106,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/drawListGuideline1"
         app:layout_constraintRight_toRightOf="@+id/drawListGuideline2"
         android:text="@string/drawListBackButton"
-        android:background="#a59e8c"
+        android:background="#c9edc3"
         android:textAllCaps="false"
         android:textSize="20sp"/>
 

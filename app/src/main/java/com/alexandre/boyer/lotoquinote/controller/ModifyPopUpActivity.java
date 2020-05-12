@@ -113,4 +113,14 @@ public class ModifyPopUpActivity extends AppCompatActivity{
             }
         });
     }
+
+    //Ici, on redéfinit la méthode appelé lorsque le bouton "Précédent" est appuyé. On renvoie ici un intent,
+    //car l'activité MainActivity attends un resultat
+    @Override
+    public void onBackPressed(){
+        //super.onBackPressed();
+        Intent i = new Intent();
+        setResult(MODIFY_POPUP,i);
+        finish();
+    }
 }

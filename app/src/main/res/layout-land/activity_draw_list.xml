@@ -24,7 +24,7 @@
     <GridView
         android:id="@+id/drawListGridView"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_marginTop="2dp"
         android:padding="5dp"
         android:numColumns="5"
@@ -69,14 +69,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.74" />
+        app:layout_constraintGuide_percent="0.70" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/drawListGuideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.78"/>
+        app:layout_constraintGuide_percent="0.74"/>
 
 
     <TextView

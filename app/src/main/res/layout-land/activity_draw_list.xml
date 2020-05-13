@@ -24,8 +24,8 @@
     <GridView
         android:id="@+id/drawListGridView"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="2dp"
         android:padding="5dp"
         android:numColumns="5"
         android:verticalSpacing="5dp"
@@ -69,14 +69,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.74" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/drawListGuideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.80"/>
+        app:layout_constraintGuide_percent="0.78"/>
 
 
     <TextView
@@ -86,7 +86,8 @@
         android:text="@string/drawListSort"
         app:layout_constraintTop_toBottomOf="@+id/drawListGuideline5"
         app:layout_constraintBottom_toTopOf="@+id/drawListGuideline6"
-        app:layout_constraintLeft_toLeftOf="@+id/drawListGuideline3"/>
+        app:layout_constraintLeft_toLeftOf="@+id/drawListGuideline3"
+        app:layout_constraintRight_toLeftOf="@+id/drawListSpinner"/>
     
     <Spinner
         android:id="@+id/drawListSpinner"

@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="Valider"
+        android:background="@drawable/custom_button"
         app:layout_constraintLeft_toRightOf="@id/guideline4"
         app:layout_constraintTop_toBottomOf="@id/guideline5"/>
 
@@ -50,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:text="Annuler"
+        android:background="@drawable/custom_button"
         app:layout_constraintRight_toLeftOf="@id/guideline4"
         app:layout_constraintTop_toBottomOf="@id/guideline5"/>
 
@@ -57,7 +59,9 @@
         android:id="@+id/activity_modify_delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Supprimer"
+        android:background="@drawable/custom_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/activity_modify_cancel_btn"

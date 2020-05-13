@@ -290,7 +290,12 @@ public class DrawTrackingActivity extends AppCompatActivity
                 int deletedNumber = mDraw.getNumberAt(mDraw.getDraw().size()-1).getNumber();
 
                 mDraw.deleteNumber();
-                Toast toast = Toast.makeText(getApplicationContext(),"Numéro " + deletedNumber + " supprimé de la liste", Toast.LENGTH_SHORT);
+                Toast toast;
+                if(deletedNumber >=0){
+                    toast = Toast.makeText(getApplicationContext(),"Numéro " + deletedNumber + " supprimé de la liste", Toast.LENGTH_SHORT);
+                }else{
+                    toast = Toast.makeText(getApplicationContext(),"Aucun numéro supprimé", Toast.LENGTH_SHORT);
+                }
                 toast.setGravity(Gravity.CENTER_VERTICAL,0,450);
                 toast.show();
                 switch(mDraw.getDraw().size()) // On décale ensuite les numéros

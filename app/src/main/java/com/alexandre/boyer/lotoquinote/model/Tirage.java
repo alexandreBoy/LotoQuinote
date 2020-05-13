@@ -86,7 +86,10 @@ public class Tirage implements Serializable
     // Récupérer un nombre situé à un index i
     public Number getNumberAt(int i)
     {
-        return draw.get(i);
+        Number n = new Number(-1);
+        if(i>=0)
+            n = draw.get(i);
+        return n;
     }
 
     public boolean isNumberDrawn(Number n){

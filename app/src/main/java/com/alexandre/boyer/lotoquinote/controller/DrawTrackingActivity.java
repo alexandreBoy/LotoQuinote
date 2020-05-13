@@ -235,7 +235,7 @@ public class DrawTrackingActivity extends AppCompatActivity
             {
                 if(mDraw.isNumberDrawn(mNumber)){ // si le nombre a déjà été tiré, cela est signalé par un toast
                     Toast toast = Toast.makeText(getApplicationContext(),"Le nombre "+mNumber.toString()+" a déjà été tiré", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                    toast.setGravity(Gravity.CENTER_VERTICAL,0,450);
                     toast.show();
                 }else{ // sinon on ajoute le nombre à la liste
                     mDraw.addNumber(mNumber);
@@ -273,7 +273,7 @@ public class DrawTrackingActivity extends AppCompatActivity
 
 
                     Toast toast = Toast.makeText(getApplicationContext(),"Numéro " + mNumber.getNumber() + " ajouté à la liste", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                    toast.setGravity(Gravity.CENTER_VERTICAL,0,450);
                     toast.show();
 
                     //On crée ensuite une nouvelle instance de l'objet Number
@@ -291,14 +291,14 @@ public class DrawTrackingActivity extends AppCompatActivity
 
                 mDraw.deleteNumber();
                 Toast toast = Toast.makeText(getApplicationContext(),"Numéro " + deletedNumber + " supprimé de la liste", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                toast.setGravity(Gravity.CENTER_VERTICAL,0,450);
                 toast.show();
                 switch(mDraw.getDraw().size()) // On décale ensuite les numéros
                 {
                     case 0:
                         mPos1List.setText("");
                         toast = Toast.makeText(getApplicationContext(),"Il n'y a pas de numéros pour ce tirage.", Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.CENTER_VERTICAL,0,32);
+                        toast.setGravity(Gravity.CENTER_VERTICAL,0,450);
                         toast.show();
                         break;
                     case 1:

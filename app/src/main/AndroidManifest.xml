@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/lotoquinote_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.DrawListActivity" />
-        <activity android:name=".controller.ModifyPopUpActivity"
-            android:theme="@style/AppTheme.PopUpTheme"
-        />
-
-
-        <activity android:name=".controller.DrawTrackingActivity" />
-        <activity android:name=".controller.MainActivity">
+        <activity android:name=".controller.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".controller.DrawListActivity" />
+        <activity
+            android:name=".controller.ModifyPopUpActivity"
+            android:theme="@style/AppTheme.PopUpTheme" />
+        <activity android:name=".controller.DrawTrackingActivity" />
+        <activity android:name=".controller.MainActivity">
         </activity>
 
         <meta-data

@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity{
     private CheckBox mDrawCheckbox;
     private TirageAdapter mTirageAdapter;
     private List<Tirage> draws = new ArrayList<>();
+    private static final int TIME_INTERVAL = 2000; // Temps pour quitter l'application
+    private long mBackPressed;
     private Context mContext = this;
     private boolean mMode; // Booléen indiquant le mode d'affichage de la liste : True --> Edition/Suppression, False --> Affichage simple
     public static final int MODIFY_POPUP = 1;
@@ -202,6 +204,8 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
+
+
     private void saveData(){
         //Sauvegarde de la liste des tirages
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
@@ -210,6 +214,18 @@ public class MainActivity extends AppCompatActivity{
         String json = gson.toJson(draws);
         editor.putString("draws list",json);
         editor.apply();
+    }
+
+    @Override
+    public void onBackPressed(){
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else { Toast.makeText(getBaseContext(), "Appuyez une deuxième fois pour quitter l'application", Toast.LENGTH_SHORT).show(); }
+
+        mBackPressed = System.currentTimeMillis();
     }
 
     private void loadData(){
@@ -228,6 +244,9 @@ public class MainActivity extends AppCompatActivity{
             mListView.setAdapter(mTirageAdapter);
         }
 
-
     }
+
+
+
+
 }

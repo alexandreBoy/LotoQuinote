@@ -120,8 +120,10 @@ public class DrawTrackingActivity extends AppCompatActivity
                     mNumberDrewText.setText(String.valueOf(mNumber.getNumber()));
                 }
                 else
-                    // Un numéro du lotoquine ne peut pas être supérieur à 90, on gère donc ce cas en "bloquant"
-                    // les NumberPicker pour qu'ils donnent tous le temps la valeur 90 quand la valeur choisit par l'utilisateur est supérieure à 90
+                    // Un numéro du lotoquine ne peut pas être supérieur à 90,
+                    // on gère donc ce cas en "bloquant"
+                    // les NumberPicker pour qu'ils donnent tous le temps la valeur 90
+                    // quand la valeur choisit par l'utilisateur est supérieure à 90
                 {
                     mNumber.setNumber(90);
                     mNumberPicker1.setValue(9);
@@ -239,7 +241,8 @@ public class DrawTrackingActivity extends AppCompatActivity
                     toast.show();
                 }else{ // sinon on ajoute le nombre à la liste
                     mDraw.addNumber(mNumber);
-                    switch(mDraw.getDraw().size()) // permet d'afficher les 5 derniers nombres tirés dans les 5 cases situées en bas de cette activitée
+                    switch(mDraw.getDraw().size()) // permet d'afficher les 5 derniers nombres
+                            // tirés dans les 5 cases situées en bas de cette activitée
                             // le dernier nombre tiré est celui le plus à gauche
                     {
                         case 0:

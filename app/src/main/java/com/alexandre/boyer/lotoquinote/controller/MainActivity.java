@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity{
                 Date today = new Date();
                 Tirage mDraw = new Tirage("Suivi du tirage n° " + (draws.size() + 1), today);
                 draws.add(mDraw);
-                Toast toast = Toast.makeText(getApplicationContext(), "" + mDraw.getTitle() + " crée", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "" + mDraw.getTitle() +
+                        " crée", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL, 0, 550);
                 toast.show();
 
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        // Gestion de la sélection d'un ou plusieurs tirages via les checkbox
+        // Gestion de la sélection d'un tirage
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){

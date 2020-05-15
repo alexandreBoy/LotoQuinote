@@ -54,7 +54,8 @@ public class DrawListActivity extends AppCompatActivity
         });
 
         // Gestion du spinner qui permet de choisir la méthode de tri de la liste des numéros tirés
-        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.sort_array, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.sort_array, android.R.layout.simple_spinner_dropdown_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(spinnerAdapter);
 
@@ -66,17 +67,25 @@ public class DrawListActivity extends AppCompatActivity
                 switch(position)
                 {
                     case 0: // Tri par ordre de tirage
-                        ArrayAdapter<Number> gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.drawedSort());
+                        ArrayAdapter<Number> gridViewArrayAdapter = new ArrayAdapter<Number>
+                                (getApplicationContext(), android.R.layout.simple_list_item_1,
+                                        mDraw.drawedSort());
                         gv.setAdapter(gridViewArrayAdapter);
                         break;
-                    case 1: // Tri par ordre croissant (on utilise la fonction ascendingSort définie dans l'objet Tirage)
+                    case 1: // Tri par ordre croissant (on utilise la fonction
+                            // ascendingSort définie dans l'objet Tirage)
                         System.out.println("Ordre croissant");
-                        gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.ascendingSort());
+                        gridViewArrayAdapter = new ArrayAdapter<Number>
+                                (getApplicationContext(), android.R.layout.simple_list_item_1,
+                                        mDraw.ascendingSort());
                         gv.setAdapter(gridViewArrayAdapter);
                         break;
-                    case 2: // Tri par ordre décroissant (on utilise la fonction descendingSort définie dans l'objet Tirage)
+                    case 2: // Tri par ordre décroissant (on utilise la fonction
+                            // descendingSort définie dans l'objet Tirage)
                         System.out.println("Ordre décroissant");
-                        gridViewArrayAdapter = new ArrayAdapter<Number>(getApplicationContext(), android.R.layout.simple_list_item_1, mDraw.descendingSort());
+                        gridViewArrayAdapter = new ArrayAdapter<Number>
+                                (getApplicationContext(), android.R.layout.simple_list_item_1,
+                                        mDraw.descendingSort());
                         gv.setAdapter(gridViewArrayAdapter);
                         break;
                     default:

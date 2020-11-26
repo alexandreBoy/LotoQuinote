@@ -3,7 +3,7 @@
 Une application Android qui permet le suivi de tirage d'un loto quine.
 
 ## Démarrage
-Un clone en local de ce projet peut être ouvert dans Android Studio pour être testé via emulateur ou via votre smartphone.
+Le fichier apk de l'application est disponible dans les releases pour être téléchargé et installé sur votre téléphone Android.
 
 ## Auteurs
 Réalisé par David Boisedu (https://github.com/DavidBoisedu) et Alexandre Boyer (https://github.com/d3xing).
